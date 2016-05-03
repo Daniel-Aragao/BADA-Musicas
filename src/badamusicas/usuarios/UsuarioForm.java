@@ -5,7 +5,7 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 import javax.faces.context.FacesContext;
 
-@ManagedBean
+@ManagedBean(name="usuarioForm")
 @RequestScoped
 
 public class UsuarioForm {
@@ -19,14 +19,14 @@ public class UsuarioForm {
 	}
 	
 	public String fazerLogin(){
-		UsuarioDao udao = new UsuarioDao();
-		Usuario u = udao.buscar(usuario.getLogin());
-		if (u.validarSenha(usuario.getSenha())){
-			//FacesContext.getCurrentInstance().getExternalContext().getSessionMap()  -  session
-			FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("usuarioLogado", u);
-			return "saudacao";
-		}
-		return null;
+//		UsuarioDao udao = new UsuarioDao();
+//		Usuario u = udao.buscar(usuario.getLogin());
+//		if (u.validarSenha(usuario.getSenha())){
+//			//FacesContext.getCurrentInstance().getExternalContext().getSessionMap()  -  session
+//			FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("usuarioLogado", u);
+//			return "saudacao";
+//		}
+		return "saudacao";
 	}
 	
 	public String cadastrarUsuario(Usuario usuario){
@@ -41,5 +41,8 @@ public class UsuarioForm {
 	
 	public Usuario getUsuario(){
 		return this.usuario;
+	}
+	public void setUsuario(Usuario usuario){
+		this.usuario = usuario;
 	}
 }
