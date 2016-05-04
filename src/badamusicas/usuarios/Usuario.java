@@ -79,7 +79,10 @@ public class Usuario {
 
 	public boolean validarCampos() {
 		
-		
+		if(login == null || senha == null || nome == null
+				|| cartao == null || validade == null || cvv > 999){
+			 return false;
+		}
 		
 		return true;		
 	}

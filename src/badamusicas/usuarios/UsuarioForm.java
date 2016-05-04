@@ -1,9 +1,9 @@
 package badamusicas.usuarios;
 
-import badamusicas.DAO.*;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
-import javax.faces.context.FacesContext;
+
+import badamusicas.DAO.UsuarioDao;
 
 @ManagedBean(name="usuarioForm")
 @RequestScoped
@@ -26,13 +26,15 @@ public class UsuarioForm {
 //			FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("usuarioLogado", u);
 //			return "saudacao";
 //		}
-		return "saudacao";
+		return null;
 	}
 	
 	public String cadastrarUsuario(Usuario usuario){
 		
+		System.out.println("é nós");
 		if(usuario.validarCampos()){
-			//salvar usuario
+			UsuarioDao udao = new UsuarioDao();
+			udao.adicionar(usuario);
 			return "index";
 		}		
 		

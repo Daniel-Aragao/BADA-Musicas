@@ -7,7 +7,7 @@ public interface IDao<T> {
 	public T buscar(String Id);
 	public T buscar(int id);
 	
-	public void adicionar(T e);
+	public boolean adicionar(T e);
 	
 	public void alterar(T e);
 	

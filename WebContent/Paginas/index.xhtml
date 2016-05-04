@@ -1,21 +1,52 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:f="http://java.sun.com/jsf/core"      
-      xmlns:h="http://java.sun.com/jsf/html">
-	
+<html 	xmlns="http://www.w3.org/1999/xhtml"
+      	xmlns:f="http://java.sun.com/jsf/core"      
+      	xmlns:h="http://java.sun.com/jsf/html"
+		xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+		xmlns:pt="http://xmlns.jcp.org/jsf/passthrough">
+		
     
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
- <title>BADA Músicas</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+	<title>BADA Músicas</title>
+	
+	<link rel="stylesheet" href="../CSS Style/init.css"/>
+	<link rel="stylesheet" href="../CSS Style/bootstrap-3.3.6/css/bootstrap.css"/>
+	<link rel="stylesheet" href="../CSS Style/Project css/layout.css"/>
+	<script src="../JavaScript/jquery-1.12.1.js"></script>
+	<script src="../JavaScript/js/bootstrap.js"></script>
+	<link rel="shortcut icon" href="speaker.png" />
 </head>
-
-    <h:body>
+	
+  <h:body>
+  <h:panelGroup id="container" layout="block" class="container-fluid">
+	<h:panelGroup layout="block" class="center-row col-lg-6 col-lg-offset-3" >
 		<h:form>
-			Login: <h:inputText value="#{usuarioForm.usuario.login}" /><br/>
-			Senha: <h:inputSecret value="#{usuarioForm.usuario.senha}" /><br/>
-			<h:commandButton value="Enviar" action="#{usuarioForm.fazerLogin}" />
+				<!--<h:message for="username" errorClass="error" />-->
+		
+			<h:panelGroup layout="block" class="form-group input-group col-lg-12">
+			<h:inputText class="form-control" value="#{usuarioForm.usuario.login}" pt:placeholder="Login" /><br/>
+			</h:panelGroup>
+			
+			<h:panelGroup layout="block" class="form-group input-group col-lg-12" >
+			<h:inputSecret class="form-control" value="#{usuarioForm.usuario.senha}" pt:placeholder="Senha"/><br/>
+			</h:panelGroup>
+			
+			<h:panelGroup layout="block" class="form-group col-lg-2 col-lg-offset-4" >
+			<h:commandButton class="btn btn-primary" value="Enviar" action="#{usuarioForm.fazerLogin}" />
+			</h:panelGroup>
+			
+			<h:panelGroup layout="block" class="form-group col-lg-2" >
+			<h:commandButton class="btn btn-success" value="Cadastrar" action="cadastro" />
+			</h:panelGroup>
 		</h:form>
-    </h:body>
+	</h:panelGroup>
+	
+	</h:panelGroup>
+	
+	
+  </h:body>
+   
 </html>
