@@ -30,7 +30,7 @@ public class UsuarioDao implements IDao<Usuario>{
 		try {
 			con = Conexao.getConexao();
 			stmt = con.prepareStatement(
-					"insert into e (login, senha, nome, cartao, validade, cvv) values(?,?,?,?,?,?)");
+					"insert into usuario (login, senha, nome, cartao, validade, cvv) values(?,?,?,?,?,?)");
 
 			stmt.setString(1, e.getLogin());
 			stmt.setString(2, e.getSenha());

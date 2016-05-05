@@ -72,9 +72,4 @@ public class Usuario {
 		this.cvv = cvv;
 	}
 
-	public boolean validarSenha(String senha) {
-//		return this.senha.equals(senha);
-		return false;
-	}
-
 }

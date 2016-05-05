@@ -1,12 +1,21 @@
-#container{
-	background-color: #404040;	
-	color: #212121;
-}
 
-html{
-	background-color: #404040;
+
+html, body{
+	background-color: #404040;	
 }
 
 .center-row{
 	padding-top:20%;
 }
+.voltarbtn{
+	padding-bottom: 6px
+}
+
+#cadastroDiv{
+	color:white;
+	padding-top: 7%;
+}
+
+/*.error-message > li{
+	text-align: center;
+}*/
