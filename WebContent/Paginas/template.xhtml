@@ -4,16 +4,26 @@
 <html 	xmlns="http://www.w3.org/1999/xhtml"
       	xmlns:f="http://java.sun.com/jsf/core"      
       	xmlns:h="http://java.sun.com/jsf/html"
-		xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+		xmlns:ui="http://xmlns.jcp.org/jsf/facelets"		
+		xmlns:pt="http://xmlns.jcp.org/jsf/passthrough">
 		
     
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
-<title>BADA Músicas</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+	<title>BADA Músicas</title>
+	
+	<link rel="stylesheet" href="../CSS Style/init.css"/>
+		<link rel="stylesheet" href="../CSS Style/bootstrap-3.3.6/css/bootstrap.css"/>
+		<link rel="stylesheet" href="../CSS Style/Project css/layout.css"/>
+		<script src="../JavaScript/jquery-1.12.1.js"></script>
+		<script src="../JavaScript/js/bootstrap.js"></script>
+	<link rel="shortcut icon" href="speaker.png" />
 </head>
 
     <h:body>
- 	<ui:include src="index.xhtml">
-	</ui:include>
+	    <ui:insert name="content" class="container container-fluid">
+	    
+	 	
+	    </ui:insert>
     </h:body>
 </html>

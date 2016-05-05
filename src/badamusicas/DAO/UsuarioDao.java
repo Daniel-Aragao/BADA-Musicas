@@ -3,6 +3,7 @@ package badamusicas.DAO;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.sql.Timestamp;
 import java.util.ArrayList;
 
 import badamusicas.usuarios.Usuario;
@@ -35,7 +36,8 @@ public class UsuarioDao implements IDao<Usuario>{
 			stmt.setString(2, e.getSenha());
 			stmt.setString(3, e.getNome());
 			stmt.setString(4, e.getCartao());
-			stmt.setTimestamp(5, e.getValidade());
+			stmt.setTimestamp(5, new Timestamp(e.getValidade().getTime()));
+//			stmt.setDate(5, new java.sql.Date(e.getValidade().getTime()));
 			stmt.setInt(6, e.getCvv());
 
 			stmt.executeUpdate();

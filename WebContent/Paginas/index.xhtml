@@ -4,49 +4,43 @@
 <html 	xmlns="http://www.w3.org/1999/xhtml"
       	xmlns:f="http://java.sun.com/jsf/core"      
       	xmlns:h="http://java.sun.com/jsf/html"
-		xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+		xmlns:ui="http://xmlns.jcp.org/jsf/facelets"	
 		xmlns:pt="http://xmlns.jcp.org/jsf/passthrough">
-		
-    
-<head>
-	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
-	<title>BADA Músicas</title>
-	
-	<link rel="stylesheet" href="../CSS Style/init.css"/>
-	<link rel="stylesheet" href="../CSS Style/bootstrap-3.3.6/css/bootstrap.css"/>
-	<link rel="stylesheet" href="../CSS Style/Project css/layout.css"/>
-	<script src="../JavaScript/jquery-1.12.1.js"></script>
-	<script src="../JavaScript/js/bootstrap.js"></script>
-	<link rel="shortcut icon" href="speaker.png" />
-</head>
-	
-  <h:body>
-  <h:panelGroup id="container" layout="block" class="container-fluid">
-	<h:panelGroup layout="block" class="center-row col-lg-6 col-lg-offset-3" >
-		<h:form>
+
+  <ui:composition template="template.xhtml">
+	  <ui:define name="content">
+		<div class="center-row col-lg-6 col-lg-offset-3" >
+			<h:form>
 				<!--<h:message for="username" errorClass="error" />-->
-		
-			<h:panelGroup layout="block" class="form-group input-group col-lg-12">
-			<h:inputText class="form-control" value="#{usuarioForm.usuario.login}" pt:placeholder="Login" /><br/>
-			</h:panelGroup>
-			
-			<h:panelGroup layout="block" class="form-group input-group col-lg-12" >
-			<h:inputSecret class="form-control" value="#{usuarioForm.usuario.senha}" pt:placeholder="Senha"/><br/>
-			</h:panelGroup>
-			
-			<h:panelGroup layout="block" class="form-group col-lg-2 col-lg-offset-4" >
-			<h:commandButton class="btn btn-primary" value="Enviar" action="#{usuarioForm.fazerLogin}" />
-			</h:panelGroup>
-			
-			<h:panelGroup layout="block" class="form-group col-lg-2" >
-			<h:commandButton class="btn btn-success" value="Cadastrar" action="cadastro" />
-			</h:panelGroup>
-		</h:form>
-	</h:panelGroup>
-	
-	</h:panelGroup>
-	
-	
-  </h:body>
-   
+				
+				<div>
+					<h:messages />
+					<!-- <h:message for="login"/>  -->
+				</div>
+				
+				<div class="form-group input-group col-lg-12">
+					<h:inputText id="login" class="form-control" 
+					value="#{usuarioForm.usuario.login}" 
+					pt:placeholder="Login" 
+					required="true" requiredMessage="Campo Login obrigatório" /><br/>
+				</div>
+				
+				<div class="form-group input-group col-lg-12" >
+					<h:inputSecret class="form-control" 
+					value="#{usuarioForm.usuario.senha}" 
+					pt:placeholder="Senha"
+					required="true" requiredMessage="Campo Senha obrigatório"/><br/>
+				</div>
+				
+				<div class="form-group col-lg-2 col-lg-offset-4" >
+					<h:commandButton class="btn btn-primary" value="Enviar" action="#{usuarioForm.fazerLogin}" />
+				</div>
+				
+				<div class="form-group col-lg-2" >
+					<h:commandButton class="btn btn-success" value="Cadastrar" action="cadastro" immediate="true" />
+				</div>
+			</h:form>
+		</div>
+		</ui:define>
+	</ui:composition>
 </html>

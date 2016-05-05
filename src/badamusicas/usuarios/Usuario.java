@@ -1,20 +1,20 @@
 package badamusicas.usuarios;
 
-import java.sql.Timestamp;
+import java.util.Date;
 
 public class Usuario {
 	private String login;
 	private String senha;
 	private String nome;
 	private String cartao;
-	private Timestamp validade;
+	private Date validade;
 	private int cvv;
 	
 	public Usuario(){
 		
 	}
 
-	public Usuario(String login, String senha, String nome, String cartao, Timestamp validade, int cvv) {
+	public Usuario(String login, String senha, String nome, String cartao, Date validade, int cvv) {
 		super();
 		this.login = login;
 		this.senha = senha;
@@ -56,11 +56,11 @@ public class Usuario {
 		this.cartao = cartao;
 	}
 
-	public Timestamp getValidade() {
+	public Date getValidade() {
 		return validade;
 	}
 
-	public void setValidade(Timestamp validade) {
+	public void setValidade(Date validade) {
 		this.validade = validade;
 	}
 
@@ -75,16 +75,6 @@ public class Usuario {
 	public boolean validarSenha(String senha) {
 //		return this.senha.equals(senha);
 		return false;
-	}
-
-	public boolean validarCampos() {
-		
-		if(login == null || senha == null || nome == null
-				|| cartao == null || validade == null || cvv > 999){
-			 return false;
-		}
-		
-		return true;		
 	}
 
 }

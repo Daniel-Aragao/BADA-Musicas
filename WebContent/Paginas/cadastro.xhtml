@@ -15,14 +15,18 @@
     
 		<h:panelGroup layout="block" style="background:#404040" class="container">
 		
-   			<h:commandButton value="Voltar" action="index"/>
    		
-			<h:form>	
+			<h:form>
+				
+   				<h:commandButton value="Voltar" action="index" immediate="true"/>
+   			
 				Login: <h:inputText value="#{usuarioForm.usuario.login}" />
 				Senha: <h:inputSecret value="#{usuarioForm.usuario.senha}" />
 				Nome: <h:inputText value="#{usuarioForm.usuario.nome}" />
 				Número do cartão: <h:inputText value="#{usuarioForm.usuario.cartao}" />
-				Validade: <h:inputText value="#{usuarioForm.usuario.validade}" />
+				Validade: <h:inputText value="#{usuarioForm.usuario.validade}" >
+					<f:convertDateTime pattern="MM/yy"></f:convertDateTime>
+				</h:inputText>
 				Código de segurança:  <h:inputText value="#{usuarioForm.usuario.cvv}" />
 				<h:commandButton class="btn btn-primary" value="Salvar" action="#{usuarioForm.cadastrarUsuario(usuarioForm.usuario)}"/>
 			</h:form>

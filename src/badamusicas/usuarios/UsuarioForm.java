@@ -30,15 +30,9 @@ public class UsuarioForm {
 	}
 	
 	public String cadastrarUsuario(Usuario usuario){
-		
-		System.out.println("é nós");
-		if(usuario.validarCampos()){
-			UsuarioDao udao = new UsuarioDao();
-			udao.adicionar(usuario);
-			return "index";
-		}		
-		
-		return null;
+		UsuarioDao udao = new UsuarioDao();
+		udao.adicionar(usuario);
+		return "index";
 	}
 	
 	public Usuario getUsuario(){
