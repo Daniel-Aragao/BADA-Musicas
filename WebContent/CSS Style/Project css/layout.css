@@ -1,7 +1,14 @@
 
 
 html, body{
-	background-color: #404040;	
+	background-color: #404040;
+	background-image: url("../../microfone.jpg");
+	background-size: 100%;
+}
+
+.panel.panel-opacity{
+	background-color: rgba(0, 0, 0, 0.6);
+	border: 0px;
 }
 
 .center-row{
@@ -16,6 +23,16 @@ html, body{
 	padding-top: 7%;
 }
 
-/*.error-message > li{
+.panel-header-background{
+	/*background-color: rgba(0, 0, 20, 0.6);*/
+	color:white;
 	text-align: center;
+}
+
+/*.error-message.alert.alert-danger{
+	display: none;
+} */
+
+/*.error-message{
+	display: none;
 }*/

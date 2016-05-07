@@ -8,37 +8,43 @@
     <ui:composition template="template.xhtml">
 	  <ui:define name="content">		
    		<div id="cadastroDiv" class=" col-lg-4 col-lg-offset-4" >
-			<h:form>
-				<h:messages class="alert alert-danger error-message" />
-				   			
-				Login: <h:inputText class="form-group form-control" value="#{usuarioForm.usuario.login}" readonly="#{facesContext.renderResponse}" 
-				required="true" requiredMessage="Login já existente"/>
-				
-				Senha: <h:inputSecret class="form-group form-control" value="#{usuarioForm.usuario.senha}" 				
-				required="true" requiredMessage="Campo Senha obrigatório" redisplay="true" />
-				
-				Nome: <h:inputText class="form-group form-control" value="#{usuarioForm.usuario.nome}" 
-				required="true" requiredMessage="Campo Nome obrigatório"/>
-				
-				Número do cartão: <h:inputText class="form-group form-control" value="#{usuarioForm.usuario.cartao}" 
-				required="true" requiredMessage="Campo Número do cartão obrigatório"/>
-				
-				Validade: <h:inputText class="form-group form-control" value="#{usuarioForm.usuario.validade}" 
-				required="true" requiredMessage="Campo Validade obrigatório">
-					<f:convertDateTime pattern="MM/yy"></f:convertDateTime>
-				</h:inputText>
-				
-				Código de segurança:  <h:inputText class="form-group form-control" value="#{usuarioForm.usuario.cvv}" 
-				required="true" requiredMessage="Campo Código de segurança obrigatório"/>
-				
-					<div class="form-group col-lg-2 col-lg-offset-3 ">
-						<h:commandButton class="btn btn-primary form-group" value="Salvar" 
-						action="#{usuarioForm.cadastrarUsuario(usuarioForm.usuario)}"/>
-					</div>
-					<div id="voltarbtn" class="form-group col-lg-2 col-lg-offset-1">
-		   				<h:commandButton class="btn btn-danger" value="Voltar" action="index" immediate="true"/>
-					</div>
-			</h:form>
+   		<div class=" panel panel-default panel-opacity">
+  			<div class="panel-body">
+				<h:form>
+					<h:messages class="alert alert-danger error-message" />
+					   			
+					Login: <h:inputText class="form-group form-control" value="#{usuarioForm.usuario.login}" readonly="#{facesContext.renderResponse}" 
+					required="true" requiredMessage="Login já existente"/>
+					
+					Senha: <h:inputSecret class="form-group form-control" value="#{usuarioForm.usuario.senha}" 				
+					required="true" requiredMessage="Campo Senha obrigatório" redisplay="true" />
+					
+					Nome: <h:inputText class="form-group form-control" value="#{usuarioForm.usuario.nome}" 
+					required="true" requiredMessage="Campo Nome obrigatório"/>
+					
+					Número do cartão: <h:inputText class="form-group form-control DigitOnly" maxlength="16"  
+					value="#{usuarioForm.usuario.cartao}" 
+					required="true" requiredMessage="Campo Número do cartão obrigatório"/>
+					
+					Validade: <h:inputText class="form-group form-control DigitOnly" value="#{usuarioForm.usuario.validade}" 
+					required="true" onkeypress="mascara(this, '##/##')" 
+					maxlength="5" requiredMessage="Campo Validade obrigatório">
+						<f:convertDateTime pattern="MM/yy"></f:convertDateTime>
+					</h:inputText>
+					
+					Código de segurança:  <h:inputText class="form-group form-control DigitOnly" value="#{usuarioForm.usuario.cvv}" 
+					required="true" maxlength="3" requiredMessage="Campo Código de segurança obrigatório"/>
+					
+						<div class="form-group col-lg-2 col-lg-offset-3 ">
+							<h:commandButton class="btn btn-primary form-group" value="Salvar" 
+							action="#{usuarioForm.cadastrarUsuario(usuarioForm.usuario)}"/>
+						</div>
+						<div id="voltarbtn" class="form-group col-lg-2 col-lg-offset-1">
+			   				<h:commandButton class="btn btn-danger" value="Voltar" action="index" immediate="true"/>
+						</div>
+				</h:form>
+				</div>
+				</div>			
 			</div>
 		</ui:define>
 	</ui:composition>
