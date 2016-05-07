@@ -9,8 +9,11 @@ html, body{
 	background-color: rgba(0, 0, 0, 0.6);
 	border: 0px;
 }
-.table-striped>tbody>tr:nth-of-type(odd) {
-    background-color: rgba(0, 0, 0, 0.0);
+.table-condensed>tbody>tr:hover {
+    background-color: rgba(0, 0, 0, 0.3);
+}
+.table>tbody>tr>td {
+	border-top: 1px solid #404040;
 }
 
 .panel-header-background{

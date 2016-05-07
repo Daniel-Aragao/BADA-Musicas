@@ -17,4 +17,9 @@ $('document').ready(function(){
 	    }
 	});
 	
+	$('.btnExcluir').on('click', function(e){
+
+		$("#confirmModal").modal('show');
+		
+	});
 });
