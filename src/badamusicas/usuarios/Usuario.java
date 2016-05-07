@@ -72,4 +72,8 @@ public class Usuario {
 		this.cvv = cvv;
 	}
 
+	public boolean validarSenha(String senha2) {
+		return senha.compareTo(senha2) == 0;
+	}
+
 }

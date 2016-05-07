@@ -7,8 +7,9 @@
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
     <ui:composition template="template.xhtml">
 	  <ui:define name="content">		
-   		<div id="cadastroDiv" class=" col-lg-4 col-lg-offset-4" >
+   		<div id="" class="center-div col-lg-4 col-lg-offset-4" >
    		<div class=" panel panel-default panel-opacity">
+  			<div class="panel-header panel-header-background"><h2><b><u>Cadastro</u></b></h2></div>
   			<div class="panel-body">
 				<h:form>
 					<h:messages class="alert alert-danger error-message" />
@@ -39,8 +40,9 @@
 							<h:commandButton class="btn btn-primary form-group" value="Salvar" 
 							action="#{usuarioForm.cadastrarUsuario(usuarioForm.usuario)}"/>
 						</div>
+						<h:inputHidden value="#{usuarioForm.cadastro}"></h:inputHidden>
 						<div id="voltarbtn" class="form-group col-lg-2 col-lg-offset-1">
-			   				<h:commandButton class="btn btn-danger" value="Voltar" action="index" immediate="true"/>
+			   				<h:commandButton class="btn btn-danger" value="Voltar" action="#{usuarioForm.voltar}" immediate="true"/>
 						</div>
 				</h:form>
 				</div>

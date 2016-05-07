@@ -2,6 +2,7 @@ package badamusicas.DAO;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Timestamp;
 import java.util.ArrayList;
@@ -11,10 +12,44 @@ import badamusicas.usuarios.Usuario;
 public class UsuarioDao implements IDao<Usuario>{
 
 	public Usuario buscar(String login) {
+		Connection con = null;
+		PreparedStatement stmt = null;
 		
-		
-		
-		return null;
+		Usuario user = null;
+
+		try {
+			con = Conexao.getConexao();
+			stmt = con.prepareStatement(
+					"SELECT * FROM usuario WHERE  login = ?");
+			stmt.setString(1, login);
+			
+			ResultSet rs = stmt.executeQuery();
+
+			if(rs.next()){
+				user = new Usuario(
+						rs.getString("login"),
+						rs.getString("senha"),
+						rs.getString("nome"),
+						rs.getString("cartao"),
+						rs.getDate("validade"),
+						rs.getInt("cvv"));
+			}
+			
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (stmt != null)
+					stmt.close();
+				if (con != null)
+					con.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+
+		return user;
 	}
 
 	@Override
@@ -80,15 +115,15 @@ public class UsuarioDao implements IDao<Usuario>{
 	}
 
 	@Override
-	public void remover(String id) {
+	public boolean remover(String id) {
 		// TODO Auto-generated method stub
-		
+		return false;
 	}
 
 	@Override
-	public void remover(int id) {
+	public boolean remover(int id) {
 		// TODO Auto-generated method stub
-		
+		return false;
 	}
 	
 	

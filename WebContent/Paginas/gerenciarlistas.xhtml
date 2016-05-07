@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:f="http://java.sun.com/jsf/core"      
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"	
+		xmlns:pt="http://xmlns.jcp.org/jsf/passthrough">
+    <ui:composition template="template.xhtml">
+		<ui:define name="content">		
+		<!-- Modal -->
+			<div id="newlistmodal" class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
+			  <div class="modal-dialog modal-sm">
+			    <div id="modal-colors" class="modal-content">
+			     	<div class="modal-header">
+			     		<h3>Adicionar nova lista</h3>
+			     	</div>
+			     	<div class="modal-body">
+				     	<h:form>
+				     	<h:messages errorClass="errorMessage" class="alert alert-danger" />
+				     		<div class="form-group input-group ">
+				     			<h:inputText id="salvarlista" class="form-control" 
+									value="#{gerenciadorForm.novaLista.nome}" 
+									pt:placeholder="Nome da lista" 
+									required="true" requiredMessage="Nome requerido" />
+				     		</div>
+				     		<div class="form-group input-group">
+				     			<h:commandButton class="btn btn-success" value="Salvar" 
+								action="#{gerenciadorForm.addLista}"></h:commandButton>
+				     		</div>
+				     	</h:form>
+			     	</div>
+			    </div>
+			  </div>
+			</div>
+			<!-- fim Modal -->
+   			<div id="" class="center-div col-lg-6 col-lg-offset-3" >
+   				<div class=" panel panel-default panel-opacity">
+  					<div class="panel-body">
+  					<div class="col-lg-12 panel-header">
+	  					<div class="col-lg-6"><h3><b><u>Gerenciador de Listas</u></b></h3></div>
+	  					<div class="col-lg-6">
+		  					<button type="button" class="btn btn-primary h3-padding pull-right btn-lg" data-toggle="modal" 
+		  					data-target="#newlistmodal">Adicionar</button>	  					
+	  					</div>
+	  					
+						
+	  					<!--<ui:insert name="newListModal">
+	  						<ui:include src="modaLista.xhtml"/> 
+	  					</ui:insert>-->
+	  					
+  					</div>
+  										
+						<h:dataTable value="#{gerenciadorForm.listas}" var="lista" 
+						class="table table-hover table-striped table-condensed table-responsive">
+							<h:column>
+								<f:facet name="header">Nome da Lista</f:facet>
+								<h:outputText value="#{lista.nome}" />
+							</h:column>
+							<h:column>
+								<f:facet name="header">Excluir</f:facet>
+								<h:commandButton class="btn btn-danger">Excluir</h:commandButton>
+							</h:column>
+							<h:column>
+								<f:facet name="header">Tocar</f:facet>
+								<h:commandButton class="btn btn-success">Tocar</h:commandButton>
+							</h:column>
+						</h:dataTable>						 
+					</div>
+				</div>		
+			</div>
+		</ui:define>
+	</ui:composition>		
+</html>

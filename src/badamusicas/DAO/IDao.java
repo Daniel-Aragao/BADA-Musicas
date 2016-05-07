@@ -14,6 +14,6 @@ public interface IDao<T> {
 	public ArrayList<T> getList(String param);
 	public ArrayList<T> getAll();
 	
-	public void remover(String id);
-	public void remover(int id);
+	public boolean remover(String id);
+	public boolean remover(int id);
 }

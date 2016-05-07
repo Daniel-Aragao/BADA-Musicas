@@ -1,38 +1,74 @@
-
-
 html, body{
 	background-color: #404040;
 	background-image: url("../../microfone.jpg");
 	background-size: 100%;
+	color: white;
 }
 
 .panel.panel-opacity{
 	background-color: rgba(0, 0, 0, 0.6);
 	border: 0px;
 }
-
-.center-row{
-	padding-top:20%;
+.table-striped>tbody>tr:nth-of-type(odd) {
+    background-color: rgba(0, 0, 0, 0.0);
 }
+
+.panel-header-background{
+	padding-left: 10px;
+}
+
 .voltarbtn{
 	padding-bottom: 6px
 }
 
-#cadastroDiv{
-	color:white;
-	padding-top: 7%;
+.center-div{
+	position: absolute;
+	top: 50%;
+	transform: translateY(-50%);
 }
 
-.panel-header-background{
-	/*background-color: rgba(0, 0, 20, 0.6);*/
-	color:white;
-	text-align: center;
+.h3-padding{
+	margin-top: 20px;
+	margin-bottom: 10px;
 }
 
-/*.error-message.alert.alert-danger{
-	display: none;
-} */
+#modal-colors{
+	background-color: rgba(0,0,0,0.2);
+}
 
-/*.error-message{
-	display: none;
-}*/
+.btn-primary{
+	color:#fff;
+	background-color: rgba(40,100,150,0.9);
+	border-color: rgba(40,100,150,0.9)
+}
+
+.btn-primary:hover{
+	color:#fff;
+	background-color: rgba(40,100,140,0.6);
+	border-color: rgba(40,100,140,0.6)
+}
+
+.btn-success{
+	color:#fff;
+	background-color: rgba(90,180,90,0.9);
+	border-color: rgba(90,180,90,0.9)
+}
+
+.btn-success:hover{
+	color:#fff;
+	background-color: rgba(90,130,90,0.9);
+	border-color: rgba(90,130,90,0.9)
+}
+
+.btn-danger{
+	color:#fff;
+	background-color: rgba(220,80,80,0.9);
+	border-color: rgba(220,80,80,0.9)
+}
+
+.btn-danger:hover{
+	color:#fff;
+	background-color: rgba(180,80,80,0.9);
+	border-color: rgba(180,80,80,0.9)
+}
+
