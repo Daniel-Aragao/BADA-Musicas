@@ -43,16 +43,20 @@
 			     		<h3>Confirmar</h3>
 			     	</div>
 			     	<div class="modal-body">
-				     	<h:form>
+
 				     	<h:messages errorClass="errorMessage" class="alert alert-danger" />
 				     		<div class="form-group input-group ">
 				     			<h3>Tem certeza que deseja excluir '#{gerenciadorForm.selectedList}'?</h3>
 				     		</div>
-				     		<div class="form-group input-group">
+			     	</div>
+			     	<div class="modal-footer">
+				     		<div class="form-group col-lg-2 col-lg-offset-1">
 				     			<h:commandButton class="btn btn-danger" value="Excluir" 
 								action="#{gerenciadorForm.removeList}"></h:commandButton>
 				     		</div>
-				     	</h:form>
+				     		<div class="form-group col-lg-2 col-lg-offset-4">
+								<button class="btn btn-primary" data-dismiss="modal">Cancelar</button>
+				     		</div>
 			     	</div>
 			    </div>
 			  </div>
@@ -70,22 +74,24 @@
 	  					</div>
 	  					
   					</div>
-  										
-						<h:dataTable value="#{gerenciadorForm.listas}" var="lista" 
-						class="table table-hover  table-condensed table-responsive">
-							<h:column>
-								<f:facet name="header">Nome da Lista</f:facet>
-								<h:outputText value="#{lista.nome}" />
-							</h:column>
-							<h:column>
-								<f:facet name="header">Tocar</f:facet>
-								<h:commandButton  class="btn btn-success btn-sm" value="Tocar"/>
-							</h:column>
-							<h:column>
-								<f:facet name="header">Excluir</f:facet>
-								<h:commandButton value="Excluir" class="btn btn-danger btn-sm btnExcluir action=" action="#{gerenciadorForm.setSelectedList(lista)}" />								
-							</h:column>
-						</h:dataTable>						 
+  						<h:form>
+							<h:dataTable value="#{gerenciadorForm.listas}" var="lista" 
+							class="table table-hover  table-condensed table-responsive">
+								<h:column>
+									<f:facet name="header">Nome da Lista</f:facet>
+									<h:outputText value="#{lista.nome}" />
+								</h:column>
+								<h:column>
+									<f:facet name="header">Tocar</f:facet>
+									<h:commandButton  class="btn btn-success btn-sm" value="Tocar"/>
+								</h:column>
+								<h:column>
+									<f:facet name="header">Excluir</f:facet>
+									<h:commandButton value="Excluir" class="btn btn-danger btn-sm tnExcluir" 
+									action="#{gerenciadorForm.removeList(lista)}" />
+								</h:column>
+							</h:dataTable>							
+  						</h:form>
 					</div>
 				</div>		
 			</div>

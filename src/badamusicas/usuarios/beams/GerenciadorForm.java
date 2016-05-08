@@ -27,6 +27,7 @@ public class GerenciadorForm {
 		user = getSessionUser();
 		
 		novaLista = new Lista();
+		novaLista.setNome("Nova lista");
 		selectedList = new Lista();
 		
 		listas.addAll(new ListaDao().getList(user.getLogin()));
@@ -43,15 +44,15 @@ public class GerenciadorForm {
 		
 		new ListaDao().adicionar(lista);
 		
-		novaLista.setNome("");
 		
-		return "gerenciarlistas";
+		
+		return "gerenciarlistas?faces-redirect=true";
 	}
 	
-	public String removeList(){		
-		new ListaDao().remover(selectedList.getId());
+	public String removeList(Lista l){		
+		new ListaDao().remover(l.getId());
 		
-		return "gerenciarlistas";
+		return "gerenciarlistas?faces-redirect=true";
 	}
 
 	public ArrayList<Lista> getListas() {
