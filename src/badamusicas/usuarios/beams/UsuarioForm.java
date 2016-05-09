@@ -1,5 +1,6 @@
 package badamusicas.usuarios.beams;
 
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 import javax.faces.context.FacesContext;
@@ -22,10 +23,13 @@ public class UsuarioForm {
 	public String fazerLogin(){
 		UsuarioDao udao = new UsuarioDao();
 		Usuario u = udao.buscar(usuario.getLogin());
-		if (u.validarSenha(usuario.getSenha())){
+		if (u != null && u.validarSenha(usuario.getSenha())){
 			//FacesContext.getCurrentInstance().getExternalContext().getSessionMap()  - pegar a session
 			FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("usuarioLogado", u);
 			return "gerenciarlistas";
+		}else{
+			FacesContext.getCurrentInstance()
+				.addMessage(null, new FacesMessage("Usuário não encontrado ou senha incorreta."));
 		}
 		return null;
 	}
