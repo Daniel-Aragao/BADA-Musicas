@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:f="http://java.sun.com/jsf/core"      
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:pt="http://xmlns.jcp.org/jsf/passthrough">
+    <ui:composition template="template.xhtml">
+		<ui:define name="content">		
+   			<div id="" class="center-div col-lg-8 col-lg-offset-2" >
+   				<div class=" panel panel-default panel-opacity">
+					<div class="panel-header">
+						<div class="padding-top">
+							<h:form>
+								<h:message for="busca" class="alert alert-danger error-message" />
+								<div class="form-group input-group col-lg-6 col-lg-offset-3">
+							   		<span class="input-group-btn">
+							   			<h:commandButton  value="Buscar" class="btn btn-primary"/>
+								    </span>	
+									<h:inputText id="busca" class="form-control" 								
+									pt:placeholder="Buscar música" 
+									required="true" requiredMessage="Preencha o nome, ou parte dele, da música" />
+									<!-- value="{usuarioForm.usuario.login}"--> 
+								</div>
+							</h:form>
+						</div>
+					</div>
+					<div class="panel-body ">
+						<h:form>
+							<div class="col-lg-4">
+								<h:selectOneMenu class="form-group">
+									<f:selectItem itemValue="Cream Latte" itemLabel="Coffee3 - Cream Latte" />
+									<f:selectItems  />
+								</h:selectOneMenu>
+							</div>
+						</h:form>
+					</div>
+				</div>
+			</div>			
+		</ui:define>
+	</ui:composition>		
+</html>
