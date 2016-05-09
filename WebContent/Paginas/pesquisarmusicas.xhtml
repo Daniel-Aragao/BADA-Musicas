@@ -26,16 +26,35 @@
 							</h:form>
 						</div>
 					</div>
-					<div class="panel-body ">
-						<h:form>
-							<div class="col-lg-4">
-								<h:selectOneMenu class="form-group">
-									<f:selectItem itemValue="Cream Latte" itemLabel="Coffee3 - Cream Latte" />
-									<f:selectItems  />
-								</h:selectOneMenu>
-							</div>
-						</h:form>
-					</div>
+					<h:form>
+						<div class="panel-body ">
+								<div class="col-lg-4 col-lg-offset-4 row form-group">
+									<h:selectOneMenu class="form-control">
+										<f:selectItem itemValue="0" itemLabel="Selecione a lista..." />
+										<f:selectItems  />
+										<!--<f:selectItems value="{user.favCoffee3Value}" var="c" 
+										itemLabel="{c.coffeeLabel}" itemValue="{c.coffeeValue}" />-->
+									</h:selectOneMenu>
+								</div>
+								<div class="row col-lg-12 form-group">
+									<div class="col-lg-5 col-lg-offset-1">
+																	
+									</div>
+									<div class="col-lg-5 ">
+										<h:selectManyListbox multiple="multiple"  class="form-control">
+											<f:selectItem itemValue="Fry Checken" itemLabel="Food1 - Fry Checken" />
+											<f:selectItem itemValue="Tomyam Soup" itemLabel="Food1 - Tomyam Soup" />
+   											<f:selectItem itemValue="Mixed Rice" itemLabel="Food1 - Mixed Rice" />
+											<!--<f:selectItems value="{user.favFood3Value}" var="f" 
+											itemLabel="{f.foodLabel}" itemValue="{f.foodValue}" />-->
+										</h:selectManyListbox>
+									</div>
+								</div>
+						</div>
+						<div class="panel-footer">
+							<h:commandButton value="Adicionar" class="btn btn-success" />							
+						</div>
+					</h:form>
 				</div>
 			</div>			
 		</ui:define>
