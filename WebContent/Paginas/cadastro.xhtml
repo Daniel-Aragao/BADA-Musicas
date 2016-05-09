@@ -29,7 +29,8 @@
 					
 					Validade: <h:inputText class="form-group form-control DigitOnly" value="#{usuarioForm.usuario.validade}" 
 					required="true" onkeypress="mascara(this, '##/##')" 
-					maxlength="5" requiredMessage="Campo Validade obrigatório">
+					maxlength="5" requiredMessage="Campo Validade obrigatório" 
+					converterMessage="Insira a data no formato MM/yy">
 						<f:convertDateTime pattern="MM/yy"></f:convertDateTime>
 					</h:inputText>
 					

@@ -54,6 +54,22 @@ public class UsuarioForm {
 		return "gerenciarlistas";
 	}
 	
+	public String checkloged(){
+		if(getSessionUser() == null){
+			return null;
+		}else{
+			return "gerenciarlistas";
+		}
+	}
+	
+	private Usuario getSessionUser(){
+		Usuario u = new Usuario();
+		
+		u = (Usuario) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("usuarioLogado");
+		
+		return u;
+	}
+	
 	public Usuario getUsuario(){
 		return this.usuario;
 	}
