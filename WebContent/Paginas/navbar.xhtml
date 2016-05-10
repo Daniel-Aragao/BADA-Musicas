@@ -14,6 +14,7 @@
 			<header> <nav class="navbar navbar-fixed-top"
 				id="nav-tolbar">
 			<div class="container-fluid">
+
 				<!-- Brand and toggle get grouped for better mobile display -->
 				<div class="navbar-header">
 					<button type="button" class="navbar-toggle collapsed">
@@ -21,25 +22,37 @@
 							class="icon-bar"></span> <span class="icon-bar"></span> <span
 							class="icon-bar"></span>
 					</button>
-					<a class="navbar-brand navbar-title" >BADA
-						Músicas</a>
+					<a class="navbar-brand navbar-title">BADA Músicas</a>
 				</div>
 
 				<!-- Collect the nav links, forms, and other content for toggling -->
 				<div class="collapse navbar-collapse"
 					id="bs-example-navbar-collapse-1">
 
+					<audio controls="controls"></audio>
+
+
 					<ul class="nav navbar-nav navbar-right">
 
-						<li><a href="gerenciarlistas.xhtml" >Gerenciar Listas</a></li>
+						<li><a href="gerenciarlistas.xhtml">Gerenciar Listas</a></li>
 
 
 						<li><a href="pesquisarmusicas.xhtml">Pesquisar músicas</a></li>
 
+
+						<li><a><h:outputText value="#{sessionScope.usuarioLogado.nome}"></h:outputText></a></li>
+						<li><a href="index.xhtml">Fazer logoff</a></li>
+
+
 					</ul>
+
+
+
 				</div>
+
 			</div>
 			</nav> </header>
+
 
 			<ui:insert name="navbarContent" class="container container-fluid">
 
