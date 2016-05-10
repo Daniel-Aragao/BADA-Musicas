@@ -6,8 +6,8 @@
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:pt="http://xmlns.jcp.org/jsf/passthrough">
-    <ui:composition template="template.xhtml">
-		<ui:define name="content">		
+    <ui:composition template="navbar.xhtml">
+		<ui:define name="navbarContent">		
    			<div id="" class="center-div col-lg-8 col-lg-offset-2" >
    				<div class=" panel panel-default panel-opacity">
 					<div class="panel-header">
@@ -19,7 +19,7 @@
 							   			<h:commandButton  value="Buscar" class="btn btn-primary"/>
 								    </span>	
 									<h:inputText id="busca" class="form-control" 								
-									pt:placeholder="Buscar música" 
+									pt:placeholder="Buscar músicas e albúns" 
 									required="true" requiredMessage="Preencha o nome, ou parte dele, da música" />
 									<!-- value="{usuarioForm.usuario.login}"--> 
 								</div>

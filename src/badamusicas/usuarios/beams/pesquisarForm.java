@@ -10,13 +10,13 @@ import badamusicas.usuarios.Usuario;
 @ManagedBean(name="pesquisarForm")
 @RequestScoped
 
-public class pesquisarForm {
+public class PesquisarForm {
 //	private ArrayList<Musica> musicas;
 //	private ArrayList<Album> albuns;
 	private Lista selectedList;
 	private Usuario user;
 	
-	public pesquisarForm(){
+	public PesquisarForm(){
 		setSelectedList(new Lista());
 		user= getSessionUser();
 	}
