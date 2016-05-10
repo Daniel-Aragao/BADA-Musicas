@@ -8,29 +8,65 @@ import java.util.ArrayList;
 
 import badamusicas.usuarios.Lista;
 import badamusicas.usuarios.Musica;
+import badamusicas.usuarios.Usuario;
 
-public class MusicaDAO implements IDao{
+public class MusicaDAO implements IDao<Musica>{
 
 	@Override
-	public Object buscar(String Id) {
+	public Musica buscar(String Id) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public Object buscar(int id) {
-		// TODO Auto-generated method stub
-		return null;
+	public Musica buscar(int id) {
+		Connection con = null;
+		PreparedStatement stmt = null;
+		
+		Musica musica = null;
+		
+		try {
+			con = Conexao.getConexao();
+			stmt = con.prepareStatement(
+					"SELECT * FROM musica WHERE  id = ?");
+			stmt.setInt(1, id);
+			
+			ResultSet rs = stmt.executeQuery();
+
+			if(rs.next()){
+				musica = new Musica(
+						rs.getInt("id"), 
+						rs.getString("nome"),
+						rs.getString("cantor"),
+						rs.getString("nome_arquivo"),
+						rs.getInt("album_id")); 
+			}
+			
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (stmt != null)
+					stmt.close();
+				if (con != null)
+					con.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+
+		return musica;
 	}
 
 	@Override
-	public boolean adicionar(Object e) {
+	public boolean adicionar(Musica e) {
 		// TODO Auto-generated method stub
 		return false;
 	}
 
 	@Override
-	public void alterar(Object e) {
+	public void alterar(Musica e) {
 		// TODO Auto-generated method stub
 		
 	}
