@@ -35,13 +35,25 @@
 					<ul class="nav navbar-nav navbar-right">
 
 						<li><a href="gerenciarlistas.xhtml">Gerenciar Listas</a></li>
-
-
 						<li><a href="pesquisarmusicas.xhtml">Pesquisar músicas</a></li>
 
+						<li class="dropdown"><a href="#" class="dropdown-toggle"
+							data-toggle="dropdown" role="button" aria-haspopup="true"
+							aria-expanded="false"><h:outputText
+									value="#{sessionScope.usuarioLogado.nome}" /> <span
+								class="caret"></span></a>
 
-						<li><a><h:outputText value="#{sessionScope.usuarioLogado.nome}"></h:outputText></a></li>
-						<li><a href="index.xhtml">Fazer logoff</a></li>
+							<ul class="dropdown-menu">
+								<li><a href="editarusuario.xhtml">Editar perfil</a></li>
+								<li><a href="index.xhtml">Fazer logoff</a></li>
+							</ul></li>
+
+
+
+
+
+
+
 
 
 					</ul>
