@@ -152,6 +152,37 @@ public class ListaDao implements IDao<Lista>{
 				e.printStackTrace();
 				return false;
 			}
+		}		
+	}
+	
+	public boolean removerMusica(int id_lista, int id_musica) {
+		Connection con = null;
+		PreparedStatement stmt = null;
+
+		try {
+			con = Conexao.getConexao();
+			stmt = con.prepareStatement(
+					"DELETE FROM musica_da_lista WHERE lista_id = ? AND musica_id = ?");
+
+			stmt.setInt(1, id_lista);
+			stmt.setInt(2, id_musica);
+
+			stmt.executeUpdate();
+			
+			return true;
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return false;
+		} finally {
+			try {
+				if (stmt != null)
+					stmt.close();
+				if (con != null)
+					con.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+				return false;
+			}
 		}
 
 		
