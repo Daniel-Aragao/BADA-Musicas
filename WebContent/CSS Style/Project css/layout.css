@@ -17,6 +17,13 @@ html, body {
 	font-weight: bold;
 }
 
+audio {
+	background-color: black;
+    width: 400px;
+    height: 30px;
+	margin-top: 10px;
+}
+
 .panel.panel-opacity {
 	background-color: rgba(0, 0, 0, 0.6);
 	border: 0px;
