@@ -68,7 +68,7 @@ public class MusicaDAO implements IDao{
 		return musicas;
 	}
 	
-	public ArrayList<Musica> getList(int lista_id) {
+	public ArrayList<Musica> getMusicasLista(int lista_id) {
 		ArrayList<Musica> musicas = new ArrayList<Musica>();
 		
 		Connection con = null;		
@@ -81,6 +81,39 @@ public class MusicaDAO implements IDao{
 										+ "WHERE ml.lista_id = ?");
 			
 			stmt.setInt(1, lista_id);
+			ResultSet rs = stmt.executeQuery();
+			while(rs.next()){
+				Musica musica = new Musica(
+						rs.getInt("id"), 
+						rs.getString("nome"),
+						rs.getString("cantor"),
+						rs.getString("nome_arquivo"),
+						rs.getInt("album_id")); 
+//				int id, String nome, String cantor, String nome_arquivo, int album_id
+				musicas.add(musica);
+			}
+			
+			
+		}catch(SQLException ee){
+			
+		}
+
+		
+		return musicas;
+	}
+	
+	public ArrayList<Musica> getMusicasAlbum(int album_id) {
+		ArrayList<Musica> musicas = new ArrayList<Musica>();
+		
+		Connection con = null;		
+		PreparedStatement stmt = null;
+		
+		try{
+			con = Conexao.getConexao();
+			stmt = con.prepareStatement("SELECT * FROM musica m"
+										+ "WHERE m.album_id = ?");
+			
+			stmt.setInt(1, album_id);
 			ResultSet rs = stmt.executeQuery();
 			while(rs.next()){
 				Musica musica = new Musica(
