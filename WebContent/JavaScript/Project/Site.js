@@ -6,6 +6,7 @@ function mascara(t, mask){
 		t.value += texto.substring(0,1);
 	}
 }
+
 $('document').ready(function(){
 		
 	$(".DigitOnly").keypress(function (e) {
@@ -31,12 +32,8 @@ $('document').ready(function(){
 
 		if (btnSrc != playerSrc) {
 			player.attr('src', btnSrc);			
-		}
-		
-		if (!player.paused) {
-			player.trigger("pause");
-		} else {
 			player.trigger("play");
 		}
+		
 	});
 });
