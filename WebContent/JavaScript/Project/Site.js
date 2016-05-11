@@ -7,8 +7,7 @@ function mascara(t, mask){
 	}
 }
 $('document').ready(function(){
-	
-	
+		
 	$(".DigitOnly").keypress(function (e) {
 	    
 	    var key = e.which;
@@ -21,5 +20,23 @@ $('document').ready(function(){
 
 		$("#confirmModal").modal('show');
 		
+	});
+
+	$('.btnPlay').on('click', function (e) {
+		e.preventDefault();
+		
+		var player = $('#audioPlayer');
+		var playerSrc = $('#audioPlayer').attr('src');
+		var btnSrc = $(this).data('src');
+
+		if (btnSrc != playerSrc) {
+			player.attr('src', btnSrc);			
+		}
+		
+		if (!player.paused) {
+			player.trigger("pause");
+		} else {
+			player.trigger("play");
+		}
 	});
 });

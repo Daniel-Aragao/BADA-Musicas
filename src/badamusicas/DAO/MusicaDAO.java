@@ -82,7 +82,7 @@ public class MusicaDAO implements IDao<Musica>{
 			con = Conexao.getConexao();
 			stmt = con.prepareStatement("SELECT * FROM musica WHERE nome LIKE ?");
 			
-			stmt.setString(1, nome);
+			stmt.setString(1, "%"+nome+"%");
 			ResultSet rs = stmt.executeQuery();
 			while(rs.next()){
 				Musica musica = new Musica(

@@ -76,7 +76,7 @@ public class AlbumDAO implements IDao<Album> {
 			con = Conexao.getConexao();
 			stmt = con.prepareStatement("SELECT * FROM album WHERE nome LIKE ?");
 			
-			stmt.setString(1, nome);
+			stmt.setString(1, "%"+nome+"%");
 			ResultSet rs = stmt.executeQuery();
 			while(rs.next()){
 				Album album = new Album(rs.getInt("id"), rs.getString("nome")); 

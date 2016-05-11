@@ -8,7 +8,7 @@
       xmlns:pt="http://xmlns.jcp.org/jsf/passthrough">
     <ui:composition template="navbar.xhtml">
 		<ui:define name="navbarContent">		
-   			<div id="" class="center-div col-lg-8 col-lg-offset-2" >
+   			<div id="" class="center-div col-lg-10 col-lg-offset-1" >
    				<div class=" panel panel-default panel-opacity">
 					<div class="panel-header">
 						<div class="padding-top">
@@ -16,12 +16,13 @@
 								<h:message for="busca" class="alert alert-danger error-message" />
 								<div class="form-group input-group col-lg-6 col-lg-offset-3">
 							   		<span class="input-group-btn">
-							   			<h:commandButton  value="Buscar" class="btn btn-primary"/>
+							   			<h:commandButton  value="Buscar" class="btn btn-primary"
+							   			action="#{pesquisarForm.buscarMusicas()}"/>
 								    </span>	
 									<h:inputText id="busca" class="form-control" 								
 									pt:placeholder="Buscar músicas e albúns" 
-									required="true" requiredMessage="Preencha o nome, ou parte dele, da música" />
-									<!-- value="{usuarioForm.usuario.login}"--> 
+									required="true" requiredMessage="Preencha o nome, ou parte dele, da música"
+									value="#{pesquisarForm.searchName}"/>
 								</div>
 							</h:form>
 						</div>
@@ -31,33 +32,46 @@
 								<div class="col-lg-4 col-lg-offset-4 row form-group">
 									<h:selectOneMenu  class="form-control">
 										<f:selectItem itemValue="0" itemLabel="Selecione a lista..." />
-										<f:selectItems  />
-										<!--<f:selectItems value="{user.favCoffee3Value}" var="c" 
-										itemLabel="{c.coffeeLabel}" itemValue="{c.coffeeValue}" />-->
+										<f:selectItems value="#{pesquisarForm.listas}" var="lista" 
+										itemLabel="#{lista.nome}" itemValue="#{lista.id}" />
 									</h:selectOneMenu>
 								</div>
 								<div class="row col-lg-12 form-group">
 									<div class="col-lg-5 col-lg-offset-1">
 										<h:outputLabel value="Selecione as músicas:" />
-										<h:selectManyListbox multiple="multiple"  class="form-control">
-										<!-- o value dessa tag deve ser a lista onde serão salvas as novas músicas
-										provavelmente o outro beam -->
-											<f:selectItem itemValue="Fry Checken" itemLabel="Food1 - Fry Checken" />
-											<f:selectItem itemValue="Tomyam Soup" itemLabel="Food1 - Tomyam Soup" />
-   											<f:selectItem itemValue="Mixed Rice" itemLabel="Food1 - Mixed Rice" />
-											<!--<f:selectItems value="{lista de onde vem os itens}" var="f" 
-											itemLabel="{f.foodLabel}" itemValue="{f.foodValue}" />-->
-										</h:selectManyListbox>				
+										<h:dataTable value="#{pesquisarForm.musicas}" var="musica" 
+											class="table table-hover table-condensed table-responsive table-darker"
+											>
+											<h:column>
+												<f:facet name="header">Selecionar</f:facet>
+												<h:selectBooleanCheckbox  />
+											</h:column>
+											<h:column>
+												<f:facet name="header">Música</f:facet>
+												<h:outputText value="#{musica.nome} - #{musica.cantor}" />
+											</h:column>
+											<h:column>
+												<f:facet name="header">Tocar</f:facet>
+												<button data-src="#{musica.nome_arquivo}"  
+													class="btn btn-success btn-sm btnPlay" >
+													<span class="glyphicon glyphicon-play"></span>
+												</button>
+											</h:column>											
+										</h:dataTable>				
 									</div>
 									<div class="col-lg-5 ">
 										<h:outputLabel value="Selecione os albúns:" />
-										<h:selectManyListbox multiple="multiple"  class="form-control">
-											<f:selectItem itemValue="Fry Checken" itemLabel="Food1 - Fry Checken" />
-											<f:selectItem itemValue="Tomyam Soup" itemLabel="Food1 - Tomyam Soup" />
-   											<f:selectItem itemValue="Mixed Rice" itemLabel="Food1 - Mixed Rice" />
-											<!--<f:selectItems value="{user.favFood3Value}" var="f" 
-											itemLabel="{f.foodLabel}" itemValue="{f.foodValue}" />-->
-										</h:selectManyListbox>
+										<h:dataTable value="#{pesquisarForm.albuns}" var="album" 
+											class="table table-hover table-condensed table-responsive table-darker">
+											<h:column>
+												<f:facet name="header">Selecionar</f:facet>
+												<h:selectBooleanCheckbox  />
+											</h:column>
+											<h:column>
+												<f:facet name="header">Album</f:facet>
+												<h:outputText value="#{album.nome}" />
+											</h:column>	
+										</h:dataTable>	
 									</div>
 								</div>
 						</div>

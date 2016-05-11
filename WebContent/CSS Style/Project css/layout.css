@@ -21,7 +21,9 @@ html, body {
 	background-color: rgba(0, 0, 0, 0.7);
 }
 
-
+.table-darker{
+	background-color: rgba(0,0,0,0.5);
+}
 
 audio {
 	background-color: black;
