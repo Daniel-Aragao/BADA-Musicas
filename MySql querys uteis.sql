@@ -19,3 +19,5 @@
 -- INSERT INTO musica(nome, cantor, nome_arquivo, album_id) values ('Iridescent','Linkin Park','../Musicas/Iridescent.mp3',2), ('Não Uso Sapato','Charlie Brown Jr.','../Musicas/Não Uso Sapato.mp3',1), ('O que é da Casa é da Casa  Papo Reto','Charlie Brown Jr.','../Musicas/O que é da Casa é da Casa  Papo Reto.mp3',1), ('Só por uma Noite','Charlie Brown Jr.','../Musicas/Só por uma Noite.mp3',1), ('The Catalyst','Linkin Park','../Musicas/The Catalyst.mp3',2), ('Horse','Cavalo', '../Musicas/horse.mp3', 4), ('Andei Só','Natiruts','../Musicas/Andei Só.mp3',3)
 
 -- SELECT * FROM musica
+
+-- SELECT * FROM musica_da_lista

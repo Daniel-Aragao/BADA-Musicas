@@ -31,8 +31,13 @@ $('document').ready(function(){
 		var btnSrc = $(this).data('src');
 
 		if (btnSrc != playerSrc) {
-			player.attr('src', btnSrc);			
-			player.trigger("play");
+			player.attr('src', btnSrc);
+		}
+
+		if(player[0].paused){
+			player[0].play();
+		}else{
+			player[0].pause();
 		}
 		
 	});

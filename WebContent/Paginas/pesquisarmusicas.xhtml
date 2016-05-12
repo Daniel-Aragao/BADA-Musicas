@@ -30,7 +30,7 @@
 					<h:form>
 						<div class="panel-body ">
 								<div class="col-lg-4 col-lg-offset-4 row form-group">
-									<h:selectOneMenu  class="form-control">
+									<h:selectOneMenu value="#{pesquisarForm.selectedList}"  class="form-control">
 										<f:selectItem itemValue="0" itemLabel="Selecione a lista..." />
 										<f:selectItems value="#{pesquisarForm.listas}" var="lista" 
 										itemLabel="#{lista.nome}" itemValue="#{lista.id}" />
@@ -40,11 +40,10 @@
 									<div class="col-lg-5 col-lg-offset-1">
 										<h:outputLabel value="Selecione as músicas:" />
 										<h:dataTable value="#{pesquisarForm.musicas}" var="musica" 
-											class="table table-hover table-condensed table-responsive table-darker"
-											>
+											class="table table-hover table-condensed table-responsive table-darker">
 											<h:column>
 												<f:facet name="header">Selecionar</f:facet>
-												<h:selectBooleanCheckbox  />
+												<h:selectBooleanCheckbox value="#{pesquisaForm.checkedMusics[musica.id]}" />
 											</h:column>
 											<h:column>
 												<f:facet name="header">Música</f:facet>

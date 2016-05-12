@@ -45,9 +45,38 @@ public class ListaDao implements IDao<Lista>{
 		return lista;
 	}
 	
-	public boolean adicionarMusicas(ArrayList<Musica> musicas){
-		
-		return true;
+	public void adicionarMusicas(ArrayList<Integer> musicasId, int listaId){
+		for(int musicaId : musicasId){
+			adicionarMusica(musicaId, listaId);
+		}
+	}
+	public void adicionarMusica(int musicaId, int listaId){
+		Connection con = null;
+		PreparedStatement stmt = null;
+
+		try {
+			con = Conexao.getConexao();
+			stmt = con.prepareStatement(
+					"insert into musica_da_lista(lista_id, lista_id, qtde_vezes_tocada) values (?, ?, ?)");
+
+			stmt.setInt(1, musicaId);
+			stmt.setInt(2, listaId);
+			stmt.setInt(3, 0);
+
+			stmt.executeUpdate();
+		} catch (SQLException ee) {
+			ee.printStackTrace();
+		} finally {
+			try {
+				if (stmt != null)
+					stmt.close();
+				if (con != null)
+					con.close();
+			} catch (SQLException ee) {
+				ee.printStackTrace();
+			}
+		}
+
 	}
 
 	@Override
@@ -80,7 +109,8 @@ public class ListaDao implements IDao<Lista>{
 			}
 		}
 	}
-
+	
+	
 	@Override
 	public void alterar(Lista e) {
 		// TODO Auto-generated method stub

@@ -21,20 +21,20 @@ import badamusicas.usuarios.Usuario;
 
 public class PesquisarForm {
 	private ArrayList<Musica> musicas;
-//	private Map<Long, Boolean> checked = new HashMap<Long, Boolean>(); aqui
+	private Map<Long, Boolean> checkedMusics = new HashMap<Long, Boolean>();
 	
 	private ArrayList<Album> albuns;
-//	private Map<Long, Boolean> checked2 = new HashMap<Long, Boolean>();aqui
+	private Map<Long, Boolean> checkedAlbuns = new HashMap<Long, Boolean>();
 	
 	private ArrayList<Lista> listas;
 	
-	private Lista selectedList;
+	private int selectedList;
 	private Usuario user;
 	
 	private String searchName;
 	
 	public PesquisarForm(){
-		setSelectedList(new Lista());
+		setSelectedList(0);
 		user= getSessionUser();
 		albuns = new ArrayList<Album>();
 		musicas = new ArrayList<Musica>();
@@ -54,20 +54,31 @@ public class PesquisarForm {
 		musicas = new MusicaDAO().getList(searchName);
 		albuns = new AlbumDAO().getList(searchName);
 		
+				
 		return "pesquisarlistas";
 	}
 	
 	public String adicionar(){
+		ArrayList<Integer> musicasId = new ArrayList<Integer>();
 		
+		for(Musica musica : musicas){
+			if(checkedMusics.get(musica.getId())){
+				musicasId.add(musica.getId());				
+			}
+		}
+		
+		new ListaDao().adicionarMusicas(musicasId, selectedList);
+		
+		checkedMusics.clear();
 		
 		return null;
 	}
 
-	public Lista getSelectedList() {
+	public int getSelectedList() {
 		return selectedList;
 	}
 
-	public void setSelectedList(Lista selectedList) {
+	public void setSelectedList(int selectedList) {
 		this.selectedList = selectedList;
 	}
 
@@ -101,5 +112,21 @@ public class PesquisarForm {
 
 	public void setSearchName(String searchName) {
 		this.searchName = searchName;
+	}
+
+	public Map<Long, Boolean> getCheckedMusics() {
+		return checkedMusics;
+	}
+
+	public void setCheckedMusics(Map<Long, Boolean> checkedMusics) {
+		this.checkedMusics = checkedMusics;
+	}
+
+	public Map<Long, Boolean> getCheckedAlbuns() {
+		return checkedAlbuns;
+	}
+
+	public void setCheckedAlbuns(Map<Long, Boolean> checkedAlbuns) {
+		this.checkedAlbuns = checkedAlbuns;
 	}
 }
