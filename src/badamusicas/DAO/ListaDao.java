@@ -7,6 +7,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 import badamusicas.usuarios.Lista;
+import badamusicas.usuarios.Musica;
 
 public class ListaDao implements IDao<Lista>{
 
@@ -42,6 +43,11 @@ public class ListaDao implements IDao<Lista>{
 
 		
 		return lista;
+	}
+	
+	public boolean adicionarMusicas(ArrayList<Musica> musicas){
+		
+		return true;
 	}
 
 	@Override
