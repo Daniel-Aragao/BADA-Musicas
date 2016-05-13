@@ -58,7 +58,7 @@ public class PesquisarForm {
 		return "pesquisarlistas";
 	}
 	
-	public String adicionar(){
+	public void adicionar(){
 		ArrayList<Integer> musicasId = new ArrayList<Integer>();
 		
 		for(Musica musica : musicas){
@@ -71,7 +71,6 @@ public class PesquisarForm {
 		
 		checkedMusics.clear();
 		
-		return null;
 	}
 
 	public int getSelectedList() {

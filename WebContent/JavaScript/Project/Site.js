@@ -7,6 +7,10 @@ function mascara(t, mask){
 	}
 }
 
+function getMsg(element) {
+    return element.attr('requiredMessage');
+}
+
 $('document').ready(function(){
 		
 	$(".DigitOnly").keypress(function (e) {
@@ -41,4 +45,23 @@ $('document').ready(function(){
 		}
 		
 	});
+
+	$(".jqvalidator").validate({
+		errorPlacement: function (error, element) {
+			error.insertAfter(null)
+		},		
+		errorClass: "has-error",
+		highlight: function(element, errorClass) {
+			$(element).parent().addClass(errorClass);
+		}
+	});
+
+	$('input').each(function(index) {
+		$(this).rules("add", {
+			messages: {
+				required: getMsg($(this))
+		}
+		});
+	});
+	
 });

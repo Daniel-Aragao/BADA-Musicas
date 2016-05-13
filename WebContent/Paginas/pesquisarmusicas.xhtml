@@ -12,28 +12,32 @@
    				<div class=" panel panel-default panel-opacity">
 					<div class="panel-header">
 						<div class="padding-top">
-							<h:form>
-								<h:message for="busca" class="alert alert-danger error-message" />
+							<h:form class="jqvalidator">
 								<div class="form-group input-group col-lg-6 col-lg-offset-3">
-							   		<span class="input-group-btn">
+						   			<div class="col-lg-2 ">
 							   			<h:commandButton  value="Buscar" class="btn btn-primary"
 							   			action="#{pesquisarForm.buscarMusicas()}"/>
-								    </span>	
-									<h:inputText id="busca" class="form-control" 								
-									pt:placeholder="Buscar músicas e albúns" 
-									required="true" requiredMessage="Preencha o nome, ou parte dele, da música"
-									value="#{pesquisarForm.searchName}"/>
+						   			</div>
+						   			<div class="col-lg-10">
+										<h:inputText id="busca" class="form-control" 								
+										pt:placeholder="Buscar músicas e albúns" 
+										required="true" requiredMessage="Preencha o nome, ou parte dele, da música"
+										pt:required="true"
+										value="#{pesquisarForm.searchName}"/>
+						   			</div>
 								</div>
 							</h:form>
 						</div>
 					</div>
-					<h:form>
+					<h:form class="jqvalidator">
+					<h:messages class="alert alert-danger"/>
 						<div class="panel-body ">
 								<div class="col-lg-4 col-lg-offset-4 row form-group">
-									<h:selectOneMenu value="#{pesquisarForm.selectedList}"  class="form-control">
-										<f:selectItem itemValue="0" itemLabel="Selecione a lista..." />
+									<h:selectOneMenu value="#{pesquisarForm.selectedList}"  class="form-control has-error select"
+									required="true" requiredMessage="Por favor, selecione uma lista." pt:required="true">
+										<f:selectItem itemValue="#{null}" itemLabel="Selecione a lista..." />
 										<f:selectItems value="#{pesquisarForm.listas}" var="lista" 
-										itemLabel="#{lista.nome}" itemValue="#{lista.id}" />
+										itemLabel="#{lista.nome}" itemValue="#{lista.id}"/>
 									</h:selectOneMenu>
 								</div>
 								<div class="row col-lg-12 form-group">
@@ -75,11 +79,12 @@
 								</div>
 						</div>
 						<div class="panel-footer">
-							<h:commandButton action="#{pesquisarForm.adicionar}" value="Adicionar" class="btn btn-success" />							
+							<h:commandButton action="#{pesquisarForm.adicionar}" value="Adicionar" class="btn btn-success pull-right" />
+							<div class="clearfix"></div>							
 						</div>
 					</h:form>
 				</div>
-			</div>			
+			</div>		
 		</ui:define>
 	</ui:composition>		
 </html>
