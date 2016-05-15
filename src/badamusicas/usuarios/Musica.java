@@ -6,6 +6,7 @@ public class Musica {
 	private String cantor;
 	private String nome_arquivo;
 	private int album_id;
+	private boolean checked;
 	
 	public Musica(int id, String nome, String cantor, String nome_arquivo, int album_id) {
 		this.id = id;
@@ -53,6 +54,12 @@ public class Musica {
 	}
 	public void setAlbum_id(int album_id) {
 		this.album_id = album_id;
+	}
+	public boolean isChecked() {
+		return checked;
+	}
+	public void setChecked(boolean checked) {
+		this.checked = checked;
 	}
 
 }

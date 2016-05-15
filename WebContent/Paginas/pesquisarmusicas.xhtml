@@ -10,9 +10,10 @@
 		<ui:define name="navbarContent">		
    			<div id="" class="center-div col-lg-10 col-lg-offset-1" >
    				<div class=" panel panel-default panel-opacity">
+							<h:form id="form1" class="jqvalidator">
+   				
 					<div class="panel-header">
 						<div class="padding-top">
-							<h:form class="jqvalidator">
 								<div class="form-group input-group col-lg-6 col-lg-offset-3">
 						   			<div class="col-lg-2 ">
 							   			<h:commandButton  value="Buscar" class="btn btn-primary"
@@ -26,10 +27,8 @@
 										value="#{pesquisarForm.searchName}"/>
 						   			</div>
 								</div>
-							</h:form>
 						</div>
 					</div>
-					<h:form class="jqvalidator">
 					<h:messages class="alert alert-danger"/>
 						<div class="panel-body ">
 								<div class="col-lg-4 col-lg-offset-4 row form-group">
@@ -47,7 +46,7 @@
 											class="table table-hover table-condensed table-responsive table-darker">
 											<h:column>
 												<f:facet name="header">Selecionar</f:facet>
-												<h:selectBooleanCheckbox value="#{pesquisaForm.checkedMusics[musica.id]}" />
+												<h:selectBooleanCheckbox value="#{pesquisarForm.checkedMusics[musica.id]}" />
 											</h:column>
 											<h:column>
 												<f:facet name="header">Música</f:facet>
@@ -79,10 +78,11 @@
 								</div>
 						</div>
 						<div class="panel-footer">
-							<h:commandButton action="#{pesquisarForm.adicionar}" value="Adicionar" class="btn btn-success pull-right" />
+							<h:commandButton action="#{pesquisarForm.adicionar()}" value="Adicionar" class="btn btn-success pull-right" />
 							<div class="clearfix"></div>							
 						</div>
 					</h:form>
+					
 				</div>
 			</div>		
 		</ui:define>

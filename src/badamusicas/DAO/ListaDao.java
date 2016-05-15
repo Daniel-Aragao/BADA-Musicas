@@ -57,10 +57,10 @@ public class ListaDao implements IDao<Lista>{
 		try {
 			con = Conexao.getConexao();
 			stmt = con.prepareStatement(
-					"insert into musica_da_lista(lista_id, lista_id, qtde_vezes_tocada) values (?, ?, ?)");
+					"insert into musica_da_lista values (?, ?, ?)");
 
-			stmt.setInt(1, musicaId);
-			stmt.setInt(2, listaId);
+			stmt.setInt(1, listaId);
+			stmt.setInt(2, musicaId);
 			stmt.setInt(3, 0);
 
 			stmt.executeUpdate();

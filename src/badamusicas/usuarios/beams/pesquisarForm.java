@@ -5,8 +5,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
-import javax.faces.view.ViewScoped;
 
 import badamusicas.DAO.AlbumDAO;
 import badamusicas.DAO.ListaDao;
@@ -17,11 +17,11 @@ import badamusicas.usuarios.Musica;
 import badamusicas.usuarios.Usuario;
 
 @ManagedBean(name="pesquisarForm")
-@ViewScoped
+@SessionScoped
 
 public class PesquisarForm {
 	private ArrayList<Musica> musicas;
-	private Map<Long, Boolean> checkedMusics = new HashMap<Long, Boolean>();
+	private Map<Long, Boolean> checkedMusics ;
 	
 	private ArrayList<Album> albuns;
 	private Map<Long, Boolean> checkedAlbuns = new HashMap<Long, Boolean>();
@@ -39,6 +39,9 @@ public class PesquisarForm {
 		albuns = new ArrayList<Album>();
 		musicas = new ArrayList<Musica>();
 		
+		checkedMusics = new HashMap<Long, Boolean>();
+		checkedAlbuns = new HashMap<Long, Boolean>();
+		
 		setListas(new ListaDao().getList(user.getLogin()));
 	}
 	
@@ -55,10 +58,10 @@ public class PesquisarForm {
 		albuns = new AlbumDAO().getList(searchName);
 		
 				
-		return "pesquisarlistas";
+		return "pesquisarmusicas";
 	}
 	
-	public void adicionar(){
+	public String adicionar(){
 		ArrayList<Integer> musicasId = new ArrayList<Integer>();
 		
 		for(Musica musica : musicas){
@@ -69,7 +72,8 @@ public class PesquisarForm {
 		
 		new ListaDao().adicionarMusicas(musicasId, selectedList);
 		
-		checkedMusics.clear();
+//		checkedMusics.clear();
+		return "pesquisarmusicas";
 		
 	}
 
