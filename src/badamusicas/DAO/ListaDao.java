@@ -6,8 +6,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-import badamusicas.usuarios.Lista;
-import badamusicas.usuarios.Musica;
+import badamusicas.entities.Lista;
+import badamusicas.entities.Musica;
 
 public class ListaDao implements IDao<Lista>{
 
@@ -62,6 +62,43 @@ public class ListaDao implements IDao<Lista>{
 			stmt.setInt(1, listaId);
 			stmt.setInt(2, musicaId);
 			stmt.setInt(3, 0);
+
+			stmt.executeUpdate();
+		} catch (SQLException ee) {
+			ee.printStackTrace();
+		} finally {
+			try {
+				if (stmt != null)
+					stmt.close();
+				if (con != null)
+					con.close();
+			} catch (SQLException ee) {
+				ee.printStackTrace();
+			}
+		}
+
+	}
+
+	public void adicionarAlbuns(ArrayList<Integer> musicasId, int listaId){
+		for(int albumId : musicasId){
+			adicionarAlbum(albumId, listaId);
+		}		
+	}
+	
+	private void adicionarAlbum(int albumId, int listaId) {
+		Connection con = null;
+		PreparedStatement stmt = null;
+
+		try {
+			con = Conexao.getConexao();
+			stmt = con.prepareStatement(
+					"INSERT  INTO musica_da_lista (lista_id, musica_id, qtde_vezes_tocada) "
+					+"SELECT ?, m.id, 0 FROM album a "
+					+"JOIN musica m ON m.album_id  = a.id "
+					+"WHERE a.id = ?");
+
+			stmt.setInt(1, listaId);
+			stmt.setInt(2, albumId);
 
 			stmt.executeUpdate();
 		} catch (SQLException ee) {

@@ -1,4 +1,4 @@
-package badamusicas.usuarios.beams;
+package badamusicas.entities.beams;
 
 import java.util.ArrayList;
 
@@ -7,8 +7,9 @@ import javax.faces.bean.RequestScoped;
 import javax.faces.context.FacesContext;
 
 import badamusicas.DAO.ListaDao;
-import badamusicas.usuarios.Lista;
-import badamusicas.usuarios.Usuario;
+import badamusicas.entities.Lista;
+import badamusicas.entities.Musica;
+import badamusicas.entities.Usuario;
 
 @ManagedBean(name="gerenciadorForm")
 @RequestScoped
@@ -31,6 +32,15 @@ public class GerenciadorForm {
 		selectedList = new Lista();
 		
 		listas.addAll(new ListaDao().getList(user.getLogin()));
+		
+		ListaDao listaDao= new ListaDao();
+		ArrayList<Musica> musicas = null;
+		for(Lista lista : listas){
+			musicas = listaDao.getMusicasLista(lista.getId());
+			for(Musica musica : musicas){
+				lista.getPaths().add(musica.getNome_arquivo());
+			}
+		}
 	}
 	
 	public String carregarMusicas(Lista lista) {
@@ -48,9 +58,7 @@ public class GerenciadorForm {
 		Lista lista = new Lista(novaLista.getNome(), user.getLogin());
 		
 		new ListaDao().adicionar(lista);
-		
-		
-		
+				
 		return "gerenciarlistas?faces-redirect=true";
 	}
 	

@@ -83,7 +83,11 @@
 								</h:column>
 								<h:column>
 									<f:facet name="header">Tocar</f:facet>
-									<h:commandButton  class="btn btn-success btn-sm" value="Tocar"/>
+									<button onclick="changeValue(#{lista.nome})"  
+										class="btn btn-success btn-sm btnPlayList"
+										data-src="#{lista.paths}">								
+										<span class="glyphicon glyphicon-play"></span>
+									</button>
 								</h:column>
 								<h:column>
 									<f:facet name="header">Excluir</f:facet>
@@ -95,7 +99,26 @@
 					</div>
 				</div>		
 			</div>
-			<script></script>
+			<script>
+			$('.btnPlayList').on('click', function (e) {
+				e.preventDefault();
+				
+				var player = $('#audioPlayer');
+				var playerSrc = $('#audioPlayer').attr('src');
+				var btnSrc = $(this).data('src');
+
+				if (btnSrc[0] != playerSrc) {
+					player.attr('src', btnSrc[0]);
+				}
+
+				if(player[0].paused){
+					player[0].play();
+				}else{
+					player[0].pause();
+				}
+				
+			});
+			</script>
 		</ui:define>
 	</ui:composition>		
 </html>

@@ -7,14 +7,14 @@
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
     <ui:composition template="navbar.xhtml">
 		<ui:define name="navbarContent">		
-   			<div class="center-div col-lg-8 col-lg-offset-2">
+   			<div class="center-div col-lg-6 col-lg-offset-3">
    				<div class="panel panel-default panel-opacity">
    					<div class="panel-header">
    						<div class="col-lg-6"><h4><b>#{musicasDaListaForm.lista.nome}</b></h4></div>
    					</div>
    					<div class="panel-body">
    						<h:form>
-	   						<div class="col-lg-8 col-lg-offset-2">
+	   						<div class="">
 	   							<h:dataTable value="#{musicasDaListaForm.musicas}" var="musica"
 	   							class="table table-hover  table-condensed table-responsive">
 	   								<h:column>

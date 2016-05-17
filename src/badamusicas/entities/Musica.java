@@ -1,4 +1,4 @@
-package badamusicas.usuarios;
+package badamusicas.entities;
 
 public class Musica {
 	private int id;

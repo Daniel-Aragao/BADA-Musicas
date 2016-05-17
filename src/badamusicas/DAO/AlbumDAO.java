@@ -6,8 +6,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-import badamusicas.usuarios.Album;
-import badamusicas.usuarios.Musica;
+import badamusicas.entities.Album;
 
 public class AlbumDAO implements IDao<Album> {
 

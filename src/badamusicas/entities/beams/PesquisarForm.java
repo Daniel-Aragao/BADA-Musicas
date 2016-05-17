@@ -1,4 +1,4 @@
-package badamusicas.usuarios.beams;
+package badamusicas.entities.beams;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -11,10 +11,10 @@ import javax.faces.context.FacesContext;
 import badamusicas.DAO.AlbumDAO;
 import badamusicas.DAO.ListaDao;
 import badamusicas.DAO.MusicaDAO;
-import badamusicas.usuarios.Album;
-import badamusicas.usuarios.Lista;
-import badamusicas.usuarios.Musica;
-import badamusicas.usuarios.Usuario;
+import badamusicas.entities.Album;
+import badamusicas.entities.Lista;
+import badamusicas.entities.Musica;
+import badamusicas.entities.Usuario;
 
 @ManagedBean(name="pesquisarForm")
 @SessionScoped
@@ -63,6 +63,7 @@ public class PesquisarForm {
 	
 	public String adicionar(){
 		ArrayList<Integer> musicasId = new ArrayList<Integer>();
+		//ADD MUSICAS
 		
 		for(Musica musica : musicas){
 			if(checkedMusics.get(musica.getId())){
@@ -71,6 +72,18 @@ public class PesquisarForm {
 		}
 		
 		new ListaDao().adicionarMusicas(musicasId, selectedList);
+		
+		//ADD ALBUMS
+		
+		ArrayList<Integer> albumsId = new ArrayList<Integer>();
+		
+		for(Album album : albuns){
+			if(checkedAlbuns.get(album.getId())){
+				albumsId.add(album.getId());
+			}
+		}
+		
+		new ListaDao().adicionarAlbuns(albumsId, selectedList);
 		
 //		checkedMusics.clear();
 		return "pesquisarmusicas";

@@ -7,7 +7,7 @@ import java.sql.SQLException;
 import java.sql.Timestamp;
 import java.util.ArrayList;
 
-import badamusicas.usuarios.Usuario;
+import badamusicas.entities.Usuario;
 
 public class UsuarioDao implements IDao<Usuario>{
 

@@ -1,4 +1,4 @@
-package badamusicas.usuarios.beams;
+package badamusicas.entities.beams;
 
 import java.util.ArrayList;
 
@@ -7,8 +7,8 @@ import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 
 import badamusicas.DAO.ListaDao;
-import badamusicas.usuarios.Lista;
-import badamusicas.usuarios.Musica;
+import badamusicas.entities.Lista;
+import badamusicas.entities.Musica;
 
 @ManagedBean(name="musicasDaListaForm")
 @SessionScoped

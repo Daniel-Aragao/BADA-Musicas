@@ -6,9 +6,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-import badamusicas.usuarios.Lista;
-import badamusicas.usuarios.Musica;
-import badamusicas.usuarios.Usuario;
+import badamusicas.entities.Musica;
 
 public class MusicaDAO implements IDao<Musica>{
 
