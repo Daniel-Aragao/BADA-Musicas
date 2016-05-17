@@ -223,5 +223,63 @@ public class ListaDao implements IDao<Lista>{
 
 		
 	}
+	
+	public ArrayList<Musica> getMusicasLista(int lista_id) {
+		ArrayList<Musica> musicas = new ArrayList<Musica>();
+		
+		Connection con = null;		
+		PreparedStatement stmt = null;
+		
+		try{
+			con = Conexao.getConexao();
+			stmt = con.prepareStatement("SELECT * FROM musica m "
+										+ "JOIN musica_da_lista ml on ml.musica_id = m.id "
+										+ "WHERE ml.lista_id = ?");
+			
+			stmt.setInt(1, lista_id);
+			ResultSet rs = stmt.executeQuery();
+			while(rs.next()){
+				Musica musica = new Musica(
+						rs.getInt("id"), 
+						rs.getString("nome"),
+						rs.getString("cantor"),
+						rs.getString("nome_arquivo"),
+						rs.getInt("album_id"),
+						rs.getInt("qtde_vezes_tocada")); 
+//				int id, String nome, String cantor, String nome_arquivo, int album_id
+				musicas.add(musica);
+			}
+			
+			
+		}catch(SQLException ee){
+			ee.printStackTrace();
+		}
+
+		
+		return musicas;
+	}
+	
+	public void tocada(int lista_id, int musica_id) {
+		ArrayList<Musica> musicas = new ArrayList<Musica>();
+		
+		Connection con = null;		
+		PreparedStatement stmt = null;
+		
+		try{
+			con = Conexao.getConexao();
+			stmt = con.prepareStatement("UPDATE musica_da_lista "
+						+"SET qtde_vezes_tocada = qtde_vezes_tocada + 1 "
+						+"WHERE lista_id = ? AND musica_id = ?");
+			
+			stmt.setInt(1, lista_id);
+			stmt.setInt(2, musica_id);
+			
+			stmt.executeUpdate();			
+			
+		}catch(SQLException ee){
+			ee.printStackTrace();
+		}
+		
+	}
 
 }

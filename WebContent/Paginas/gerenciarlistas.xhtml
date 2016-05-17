@@ -65,21 +65,21 @@
 			
    			<div id="" class="center-div col-lg-6 col-lg-offset-3"  >
    				<div class=" panel panel-default panel-opacity">
-  					<div class="panel-body">
   					<div class="col-lg-12 panel-header">
 	  					<div class="col-lg-6"><h4><b>Gerenciador de Listas</b></h4></div>
 	  					<div class="col-lg-6">
 		  					<button type="button" class="btn btn-primary h3-padding pull-right btn-lg" data-toggle="modal" 
 		  					data-target="#newlistmodal">Adicionar</button>	  					
-	  					</div>
+  					</div>
 	  					
   					</div>
+  					<div class="panel-body">
   						<h:form >
 							<h:dataTable value="#{gerenciadorForm.listas}" var="lista" 
 							class="table table-hover  table-condensed table-responsive">
 								<h:column>
 									<f:facet name="header">Nome da Lista</f:facet>
-									<h:outputText value="#{lista.nome}" />
+									<h:commandLink action="#{gerenciadorForm.carregarMusicas(lista)}" value="#{lista.nome}"/>
 								</h:column>
 								<h:column>
 									<f:facet name="header">Tocar</f:facet>

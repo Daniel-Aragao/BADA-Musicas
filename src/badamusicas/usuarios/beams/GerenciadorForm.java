@@ -33,6 +33,11 @@ public class GerenciadorForm {
 		listas.addAll(new ListaDao().getList(user.getLogin()));
 	}
 	
+	public String carregarMusicas(Lista lista) {
+		FacesContext.getCurrentInstance().getExternalContext().getFlash().put("lista", lista);
+		return "musicasdalista";
+	}
+	
 	public Lista getLista(int id){
 		Lista lista = new ListaDao().buscar(id);				
 		return lista;
@@ -69,6 +74,12 @@ public class GerenciadorForm {
 		u = (Usuario) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("usuarioLogado");
 		
 		return u;
+	}
+	
+	public String listaSelected(Lista lista){
+		
+		selectedList = lista;
+		return "musicasdalista";
 	}
 
 	public Lista getNovaLista() {
