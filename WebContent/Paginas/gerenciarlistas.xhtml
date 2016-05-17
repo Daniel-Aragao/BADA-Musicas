@@ -83,8 +83,7 @@
 								</h:column>
 								<h:column>
 									<f:facet name="header">Tocar</f:facet>
-									<button onclick="changeValue(#{lista.nome})"  
-										class="btn btn-success btn-sm btnPlayList"
+									<button class="btn btn-success btn-sm btnPlayList"
 										data-src="#{lista.paths}">								
 										<span class="glyphicon glyphicon-play"></span>
 									</button>
@@ -100,12 +99,20 @@
 				</div>		
 			</div>
 			<script>
+			var audioSrcArray = [];
+			var playingInt = 0;
+			
 			$('.btnPlayList').on('click', function (e) {
 				e.preventDefault();
 				
 				var player = $('#audioPlayer');
 				var playerSrc = $('#audioPlayer').attr('src');
-				var btnSrc = $(this).data('src');
+				var btnSrcString = $(this).data('src');
+				btnSrcString = btnSrcString.replace('[','');
+				btnSrcString = btnSrcString.replace(']','');
+				
+				var btnSrc = btnSrcString.split(',');
+				audioSrcArray = btnSrc;
 
 				if (btnSrc[0] != playerSrc) {
 					player.attr('src', btnSrc[0]);
@@ -113,10 +120,21 @@
 
 				if(player[0].paused){
 					player[0].play();
+					playingInt = 0;
 				}else{
 					player[0].pause();
 				}
 				
+				
+			});
+			
+			$('#audioPlayer').on('ended', function(e){
+				playingInt = playingInt + 1;
+				if(playingInt > audioSrcArray.length){
+					playingInt = 0;
+				}
+					$(this).attr('src', audioSrcArray[playingInt]);						
+					$(this)[0].play();				
 			});
 			</script>
 		</ui:define>
