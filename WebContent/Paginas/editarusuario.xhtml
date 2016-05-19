@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:f="http://java.sun.com/jsf/core"      
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+    <ui:composition template="navbar.xhtml">
+	  <ui:define name="navbarContent">		
+   		<div id="" class="center-div col-lg-4 col-lg-offset-4" >
+   		<div class=" panel panel-default panel-opacity">
+  			<div class="panel-header panel-header-background"><h5><b><h:outputText
+									value="#{sessionScope.usuarioLogado.nome}" />,atualize suas informações!</b></h5></div>
+  			<div class="panel-body">
+				<h:form>
+					   			
+					Login: <h:inputText class="form-group form-control" value="#{usuarioForm.usuario.login}"/>
+					
+					Senha: <h:inputSecret class="form-group form-control" value="#{usuarioForm.usuario.senha}"/>
+					
+					Nome: <h:inputText class="form-group form-control" value="#{usuarioForm.usuario.nome}"/>
+					
+					Número do cartão: <h:inputText class="form-group form-control DigitOnly" maxlength="16"  
+					value="#{usuarioForm.usuario.cartao}" />
+					
+					Validade: <h:inputText class="form-group form-control DigitOnly" value="#{usuarioForm.usuario.validade}" 
+					required="true" onkeypress="mascara(this, '##/##')" 
+					maxlength="5" requiredMessage="Campo Validade obrigatório" 
+					converterMessage="Insira a data no formato MM/yy">
+						<f:convertDateTime pattern="MM/yy"></f:convertDateTime>
+					</h:inputText>
+					
+					Código de segurança:  <h:inputText class="form-group form-control DigitOnly" value="#{usuarioForm.usuario.cvv}" 
+					required="true" maxlength="3" requiredMessage="Campo Código de segurança obrigatório"/>
+					
+						<div class="form-group">
+							<h:commandButton class="btn btn-primary form-group" value="Salvar" 
+							action="#{usuarioForm.alterar(usuarioForm.usuario)}"/>
+						</div>
+						
+						<h:inputHidden value="#{usuarioForm.cadastro}"></h:inputHidden>
+						
+				</h:form>
+				</div>
+				</div>			
+			</div>
+		</ui:define>
+	</ui:composition>
+		
+</html>
