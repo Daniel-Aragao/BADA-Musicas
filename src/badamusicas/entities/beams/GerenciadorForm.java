@@ -67,6 +67,12 @@ public class GerenciadorForm {
 		
 		return "gerenciarlistas?faces-redirect=true";
 	}
+	
+	public String tocada(Lista l, Musica m){
+		new ListaDao().tocada(l.getId(), m.getId());
+		
+		return null;
+	}
 
 	public ArrayList<Lista> getListas() {
 		return listas;

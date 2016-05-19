@@ -3,7 +3,7 @@ package badamusicas.entities.beams;
 import java.util.ArrayList;
 
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.SessionScoped;
+import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
 
 import badamusicas.DAO.ListaDao;
@@ -11,7 +11,7 @@ import badamusicas.entities.Lista;
 import badamusicas.entities.Musica;
 
 @ManagedBean(name="musicasDaListaForm")
-@SessionScoped
+@ViewScoped
 
 public class MusicasDaListaForm {
 	private Lista lista;
@@ -26,8 +26,8 @@ public class MusicasDaListaForm {
 	
 	public String removerMusica(Musica musica){
 		listaDao.removerMusica(lista.getId(), musica.getId());
-		
-		return "musicasdalista?faces-redirect=true";
+		musicas = listaDao.getMusicasLista(lista.getId());
+		return null;
 	}
 
 	public ArrayList<Musica> getMusicas() {

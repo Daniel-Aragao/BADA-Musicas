@@ -10,26 +10,27 @@
 		<ui:define name="navbarContent">		
    			<div id="" class="center-div col-lg-10 col-lg-offset-1" >
    				<div class=" panel panel-default panel-opacity">
-							<h:form id="form1" class="jqvalidator">
-   				
-					<div class="panel-header">
-						<div class="padding-top">
-								<div class="form-group input-group col-lg-6 col-lg-offset-3">
-						   			<div class="col-lg-2 ">
-							   			<h:commandButton  value="Buscar" class="btn btn-primary"
-							   			action="#{pesquisarForm.buscarMusicas()}"/>
-						   			</div>
-						   			<div class="col-lg-10">
-										<h:inputText id="busca" class="form-control" 								
-										pt:placeholder="Buscar músicas e albúns" 
-										required="true" requiredMessage="Preencha o nome, ou parte dele, da música"
-										pt:required="true"
-										value="#{pesquisarForm.searchName}"/>
-						   			</div>
-								</div>
-						</div>
-					</div>
+					<h:form id="form1" class="jqvalidator">
+						<div class="panel-header">
+							<div class="padding-top">
+									<div class="form-group input-group col-lg-6 col-lg-offset-3">
+							   			<div class="col-lg-2 ">
+								   			<h:commandButton  value="Buscar" class="btn btn-primary"
+								   			action="#{pesquisarForm.buscarMusicas()}"/>
+							   			</div>
+							   			<div class="col-lg-10">
+											<h:inputText id="busca" class="form-control" 								
+											pt:placeholder="Buscar músicas e álbuns" 
+											required="true" requiredMessage="Preencha o nome, ou parte dele, da música"
+											pt:required="true"
+											value="#{pesquisarForm.searchName}"/>
+							   			</div>
+									</div>
+							</div>
+						</div>   				
+					 </h:form> 
 					<h:messages class="alert alert-danger"/>
+					 <h:form id="form2" class="jqvalidator"> 
 						<div class="panel-body ">
 								<div class="col-lg-4 col-lg-offset-4 row form-group">
 									<h:selectOneMenu value="#{pesquisarForm.selectedList}"  class="form-control has-error select"
@@ -62,7 +63,7 @@
 										</h:dataTable>				
 									</div>
 									<div class="col-lg-5 ">
-										<h:outputLabel value="Selecione os albúns:" />
+										<h:outputLabel value="Selecione os álbuns:" />
 										<h:dataTable value="#{pesquisarForm.albuns}" var="album" 
 											class="table table-hover table-condensed table-responsive table-darker">
 											<h:column>
@@ -70,7 +71,7 @@
 												<h:selectBooleanCheckbox value="#{pesquisarForm.checkedAlbuns[album.id]}" />
 											</h:column>
 											<h:column>
-												<f:facet name="header">Album</f:facet>
+												<f:facet name="header">Álbum</f:facet>
 												<h:outputText value="#{album.nome}" />
 											</h:column>	
 										</h:dataTable>	

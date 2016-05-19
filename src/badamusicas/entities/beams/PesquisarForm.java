@@ -5,7 +5,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.SessionScoped;
+import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
 
 import badamusicas.DAO.AlbumDAO;
@@ -17,7 +17,7 @@ import badamusicas.entities.Musica;
 import badamusicas.entities.Usuario;
 
 @ManagedBean(name="pesquisarForm")
-@SessionScoped
+@ViewScoped
 
 public class PesquisarForm {
 	private ArrayList<Musica> musicas;
@@ -58,7 +58,7 @@ public class PesquisarForm {
 		albuns = new AlbumDAO().getList(searchName);
 		
 				
-		return "pesquisarmusicas";
+		return null;
 	}
 	
 	public String adicionar(){
@@ -86,7 +86,7 @@ public class PesquisarForm {
 		new ListaDao().adicionarAlbuns(albumsId, selectedList);
 		
 //		checkedMusics.clear();
-		return "pesquisarmusicas";
+		return null;
 		
 	}
 
