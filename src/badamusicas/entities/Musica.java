@@ -1,4 +1,4 @@
-package badamusicas.usuarios;
+package badamusicas.entities;
 
 public class Musica {
 	private int id;
@@ -6,14 +6,24 @@ public class Musica {
 	private String cantor;
 	private String nome_arquivo;
 	private int album_id;
+	private int qtdeTocada;
 	private boolean checked;
 	
+	public Musica(int id, String nome, String cantor, String nome_arquivo, int album_id, int qtdeTocada) {
+		this.id = id;
+		this.nome = nome;
+		this.cantor = cantor;
+		this.nome_arquivo = nome_arquivo;
+		this.album_id = album_id;
+		this.setQtdeTocada(qtdeTocada);
+	}
 	public Musica(int id, String nome, String cantor, String nome_arquivo, int album_id) {
 		this.id = id;
 		this.nome = nome;
 		this.cantor = cantor;
 		this.nome_arquivo = nome_arquivo;
 		this.album_id = album_id;
+		this.setQtdeTocada(qtdeTocada);
 	}
 	public Musica(String nome, String cantor, String nome_arquivo, int album_id) {
 		this.nome = nome;
@@ -60,6 +70,12 @@ public class Musica {
 	}
 	public void setChecked(boolean checked) {
 		this.checked = checked;
+	}
+	public int getQtdeTocada() {
+		return qtdeTocada;
+	}
+	public void setQtdeTocada(int qtdeTocada) {
+		this.qtdeTocada = qtdeTocada;
 	}
 
 }

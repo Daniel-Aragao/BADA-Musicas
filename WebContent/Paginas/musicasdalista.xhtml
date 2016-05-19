@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:f="http://java.sun.com/jsf/core"      
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+    <ui:composition template="navbar.xhtml">
+		<ui:define name="navbarContent">		
+   			<div class="center-div col-lg-6 col-lg-offset-3">
+   				<div class="panel panel-default panel-opacity">
+   					<div class="panel-header">
+   						<div class="col-lg-6"><h4><b>#{musicasDaListaForm.lista.nome}</b></h4></div>
+   					</div>
+   					<div class="panel-body">
+   						<h:form>
+	   						<div class="">
+	   							<h:dataTable value="#{musicasDaListaForm.musicas}" var="musica"
+	   							class="table table-hover  table-condensed table-responsive">
+	   								<h:column>
+	   									<f:facet name="header">Nome da Música</f:facet>
+	   									<h:outputText value="#{musica.nome}" />
+	   								</h:column>
+	   								<h:column>
+	   									<f:facet name="header">Tocar</f:facet>
+	   									<button data-src="#{musica.nome_arquivo}"  
+														class="btn btn-success btn-sm btnPlay" >
+														<span class="glyphicon glyphicon-play"></span>
+										</button>
+	   								</h:column>
+	   								<h:column>
+	   									<f:facet name="header">Vezes Tocadas</f:facet>
+	   									<h:outputText value="#{musica.qtdeTocada}" />
+	   								</h:column>
+	   								<h:column>
+	   									<f:facet name="header">Excluir</f:facet>
+	   									<h:commandButton value="Excluir" class="btn btn-danger btn-sm tnExcluir" 
+										action="#{musicasDaListaForm.removerMusica(musica)}" />
+	   								</h:column>
+	   							</h:dataTable>
+	   						</div>
+   						</h:form>
+   					</div>
+   				</div>
+   			</div>
+		</ui:define>
+	</ui:composition>		
+</html>

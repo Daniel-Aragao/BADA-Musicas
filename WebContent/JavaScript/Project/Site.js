@@ -64,4 +64,28 @@ $('document').ready(function(){
 		});
 	});
 	
+	$('.btnPlayList').on('click', function (e) {
+				e.preventDefault();
+				
+				var player = $('#audioPlayer');
+				var playerSrc = $('#audioPlayer').attr('src');
+				var btnSrcString = $(this).data('src');
+				btnSrcString = btnSrcString.replace('[','');
+				btnSrcString = btnSrcString.replace(']','');
+				
+				var btnSrc = btnSrcString.split(',');
+
+				if (btnSrc[0] != playerSrc) {
+					player.attr('src', btnSrc[0]);
+				}
+
+				if(player[0].paused){
+					player[0].play();
+				}else{
+					player[0].pause();
+				}
+				
+				
+		});
+	
 });

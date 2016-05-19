@@ -1,4 +1,4 @@
-package badamusicas.usuarios;
+package badamusicas.entities;
 
 import java.util.Date;
 

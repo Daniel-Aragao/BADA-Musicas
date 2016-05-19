@@ -21,3 +21,5 @@
 -- SELECT * FROM musica
 
 -- SELECT * FROM musica_da_lista
+
+-- INSERT  INTO musica_da_lista (lista_id, musica_id, qtde_vezes_tocada) SELECT 1, m.id,0 FROM album a JOIN musica m ON m.album_id  = a.id WHERE a.id = 4

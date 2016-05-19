@@ -54,7 +54,7 @@
 											</h:column>
 											<h:column>
 												<f:facet name="header">Tocar</f:facet>
-												<button data-src="#{musica.nome_arquivo}"  
+												<button data-src='#{musica.nome_arquivo}'  
 													class="btn btn-success btn-sm btnPlay" >
 													<span class="glyphicon glyphicon-play"></span>
 												</button>
@@ -67,7 +67,7 @@
 											class="table table-hover table-condensed table-responsive table-darker">
 											<h:column>
 												<f:facet name="header">Selecionar</f:facet>
-												<h:selectBooleanCheckbox  />
+												<h:selectBooleanCheckbox value="#{pesquisarForm.checkedAlbuns[album.id]}" />
 											</h:column>
 											<h:column>
 												<f:facet name="header">Album</f:facet>

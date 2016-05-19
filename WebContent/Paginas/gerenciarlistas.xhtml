@@ -65,25 +65,28 @@
 			
    			<div id="" class="center-div col-lg-6 col-lg-offset-3"  >
    				<div class=" panel panel-default panel-opacity">
-  					<div class="panel-body">
   					<div class="col-lg-12 panel-header">
 	  					<div class="col-lg-6"><h4><b>Gerenciador de Listas</b></h4></div>
 	  					<div class="col-lg-6">
 		  					<button type="button" class="btn btn-primary h3-padding pull-right btn-lg" data-toggle="modal" 
 		  					data-target="#newlistmodal">Adicionar</button>	  					
-	  					</div>
+  					</div>
 	  					
   					</div>
+  					<div class="panel-body">
   						<h:form >
 							<h:dataTable value="#{gerenciadorForm.listas}" var="lista" 
 							class="table table-hover  table-condensed table-responsive">
 								<h:column>
 									<f:facet name="header">Nome da Lista</f:facet>
-									<h:outputText value="#{lista.nome}" />
+									<h:commandLink action="#{gerenciadorForm.carregarMusicas(lista)}" value="#{lista.nome}"/>
 								</h:column>
 								<h:column>
 									<f:facet name="header">Tocar</f:facet>
-									<h:commandButton  class="btn btn-success btn-sm" value="Tocar"/>
+									<button class="btn btn-success btn-sm btnPlayList"
+										data-src="#{lista.paths}">								
+										<span class="glyphicon glyphicon-play"></span>
+									</button>
 								</h:column>
 								<h:column>
 									<f:facet name="header">Excluir</f:facet>
@@ -95,7 +98,45 @@
 					</div>
 				</div>		
 			</div>
-			<script></script>
+			<script>
+			var audioSrcArray = [];
+			var playingInt = 0;
+			
+			$('.btnPlayList').on('click', function (e) {
+				e.preventDefault();
+				
+				var player = $('#audioPlayer');
+				var playerSrc = $('#audioPlayer').attr('src');
+				var btnSrcString = $(this).data('src');
+				btnSrcString = btnSrcString.replace('[','');
+				btnSrcString = btnSrcString.replace(']','');
+				
+				var btnSrc = btnSrcString.split(',');
+				audioSrcArray = btnSrc;
+
+				if (btnSrc[0] != playerSrc) {
+					player.attr('src', btnSrc[0]);
+				}
+
+				if(player[0].paused){
+					player[0].play();
+					playingInt = 0;
+				}else{
+					player[0].pause();
+				}
+				
+				
+			});
+			
+			$('#audioPlayer').on('ended', function(e){
+				playingInt = playingInt + 1;
+				if(playingInt > audioSrcArray.length){
+					playingInt = 0;
+				}
+					$(this).attr('src', audioSrcArray[playingInt]);						
+					$(this)[0].play();				
+			});
+			</script>
 		</ui:define>
 	</ui:composition>		
 </html>
