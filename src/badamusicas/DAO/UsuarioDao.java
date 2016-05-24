@@ -98,8 +98,37 @@ public class UsuarioDao implements IDao<Usuario>{
 
 	@Override
 	public void alterar(Usuario e) {
-		// TODO Auto-generated method stub
-		
+		Connection con = null;
+		PreparedStatement stmt = null;
+
+		String sql = "UPDATE usuario SET senha=?, nome=?, cartao=?,cvv=? WHERE login=?";
+		try {
+			con = Conexao.getConexao();
+			PreparedStatement statement = con.prepareStatement(sql);
+
+			statement.setString(1, e.getSenha());
+			statement.setString(2, e.getNome());
+			statement.setString(3, e.getCartao());
+			statement.setInt(4, e.getCvv());
+			statement.setString(5, e.getLogin());
+
+			int rowsUpdated = statement.executeUpdate();
+			if (rowsUpdated > 0) {
+			    System.out.println("An existing user was updated successfully!");
+			}
+		} catch (SQLException ee) {
+			ee.printStackTrace();
+		} finally {
+			try {
+				if (stmt != null)
+					stmt.close();
+				if (con != null)
+					con.close();
+			} catch (SQLException ee) {
+				ee.printStackTrace();
+			}
+		}
+
 	}
 
 	@Override
