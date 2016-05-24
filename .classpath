@@ -14,17 +14,17 @@
 	</classpathentry>
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.web.container"/>
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.module.container"/>
-	<classpathentry kind="lib" path="C:/Users/danda_000/Documents/Estudos, Unifor/Quarto semestre/Tecnologias de internet 1/mysql-connector-java-5.1.35-bin.jar">
+	<classpathentry kind="lib" path="C:/Users/barbarasperinas/Downloads/ingressosOnline-trabalho/ingressosOnline-trabalho/mysql-connector-java-5.1.35-bin.jar">
 		<attributes>
 			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="C:/Users/danda_000/Documents/Estudos, Unifor/Quarto semestre/Tecnologias de internet 1/javax.faces-2.2.9.jar">
+	<classpathentry kind="lib" path="C:/Users/barbarasperinas/Documents/Curso/TI/javax.faces-2.2.9.jar">
 		<attributes>
 			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="C:/Users/danda_000/Documents/Estudos, Unifor/Quarto semestre/Tecnologias de internet 1/jstl-1.2.jar">
+	<classpathentry kind="lib" path="C:/Users/barbarasperinas/Documents/Curso/TI/jstl-1.2.jar">
 		<attributes>
 			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
 		</attributes>
