@@ -10,32 +10,36 @@
    		<div id="" class="center-div col-lg-4 col-lg-offset-4" >
    		<div class=" panel panel-default panel-opacity">
   			<div class="panel-header panel-header-background"><h5><b><h:outputText
-									value="#{sessionScope.usuarioLogado.nome}" />,atualize suas informações!</b></h5></div>
+				value="#{usuarioLogado.nome}" redisplay="true" />,atualize suas informações!</b></h5></div>
   			<div class="panel-body">
 				<h:form>
 					   			
-					Login: <h:inputText class="form-group form-control" value="#{usuarioForm.usuario.login}"/>
+					Login: <h:inputText class="form-group form-control" value="#{usuarioLogado.login}"
+					readonly="#{facesContext.renderResponse}"/>
 					
-					Senha: <h:inputSecret class="form-group form-control" value="#{usuarioForm.usuario.senha}"/>
+					Senha: <h:inputSecret class="form-group form-control" value="#{usuarioLogado.senha}"
+					required="true" requiredMessage="Campo Senha obrigatório" redisplay="true" />
 					
-					Nome: <h:inputText class="form-group form-control" value="#{usuarioForm.usuario.nome}"/>
+					Nome: <h:inputText class="form-group form-control" value="#{usuarioLogado.nome}"
+					required="true" requiredMessage="Campo Nome obrigatório"/>
 					
 					Número do cartão: <h:inputText class="form-group form-control DigitOnly" maxlength="16"  
-					value="#{usuarioForm.usuario.cartao}" />
+					value="#{usuarioLogado.cartao}" required="true" 
+					requiredMessage="Campo Número do cartão obrigatório"/>
 					
-					Validade: <h:inputText class="form-group form-control DigitOnly" value="#{usuarioForm.usuario.validade}" 
+					Validade: <h:inputText class="form-group form-control DigitOnly" value="#{usuarioLogado.validade}" 
 					required="true" onkeypress="mascara(this, '##/##')" 
 					maxlength="5" requiredMessage="Campo Validade obrigatório" 
 					converterMessage="Insira a data no formato MM/yy">
 						<f:convertDateTime pattern="MM/yy"></f:convertDateTime>
 					</h:inputText>
 					
-					Código de segurança:  <h:inputText class="form-group form-control DigitOnly" value="#{usuarioForm.usuario.cvv}" 
+					Código de segurança:  <h:inputText class="form-group form-control DigitOnly" value="#{usuarioLogado.cvv}" 
 					required="true" maxlength="3" requiredMessage="Campo Código de segurança obrigatório"/>
 					
 						<div class="form-group">
 							<h:commandButton class="btn btn-primary form-group" value="Salvar" 
-							action="#{usuarioForm.alterar(usuarioForm.usuario)}"/>
+							action="#{usuarioForm.alterarUsuario}"/>
 						</div>
 						
 						<h:inputHidden value="#{usuarioForm.cadastro}"></h:inputHidden>

@@ -2,6 +2,7 @@ package badamusicas.entities.beams;
 
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.RequestScoped;
 import javax.faces.context.FacesContext;
 import javax.servlet.http.HttpSession;
@@ -15,6 +16,10 @@ import badamusicas.entities.Usuario;
 public class UsuarioForm {
 
 	private Usuario usuario;
+	
+	@ManagedProperty(value="#{usuarioLogado}")
+	private Usuario usuarioLogado;
+	
 	private boolean cadastro;
 	UsuarioDao udao = new UsuarioDao();
 
@@ -54,8 +59,8 @@ public class UsuarioForm {
 		return "cadastro";
 	}
 
-	public String alterarUsuario(Usuario usuario) {
-		udao.alterar(usuario);
+	public String alterarUsuario() {
+		udao.alterar(usuarioLogado);
 		return fazerLogoff();
 	}
 
@@ -99,4 +104,14 @@ public class UsuarioForm {
 	public void setCadastro(boolean cadastro) {
 		this.cadastro = cadastro;
 	}
+
+	public Usuario getUsuarioLogado() {
+		return usuarioLogado;
+	}
+
+	public void setUsuarioLogado(Usuario usuarioLogado) {
+		this.usuarioLogado = usuarioLogado;
+	}
+	
+	
 }

@@ -16,7 +16,7 @@ public class Conexao {
 	public static Connection getConexao() throws SQLException{
 		
 		return DriverManager.getConnection(
-				"jdbc:mysql://localhost:3306/spotify", 
+				"jdbc:mysql://localhost:3307/spotify", 
 				"root", 
 				"123456");
 	}
